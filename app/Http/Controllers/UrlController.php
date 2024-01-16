@@ -30,4 +30,8 @@ class UrlController extends BaseController
 
         return $this->urlService->add(compact('url', 'alias', 'customPath'));
     }
+
+    public function getURL(Request $request) {
+
+    }
 }
