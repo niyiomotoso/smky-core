@@ -3,17 +3,16 @@
 namespace App\Services;
 
 use App\Models\Url;
+use App\Repository\UrlRepository;
 use App\Utility\CharacterGenerator;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Facades\Log;
 
 class UrlService
 {
-    private DatabaseManager $database;
 
-    public function __construct(DatabaseManager $database)
+    public function __construct(private DatabaseManager $database, private UrlRepository $urlRepository)
     {
-        $this->database = $database;
     }
 
     public function add(array $data): Url
@@ -41,4 +40,8 @@ class UrlService
     }
 
 
+    public function getURLByPath(string $path): string
+    {
+        return $this->urlRepository->getURLByPath($path);
+    }
 }
