@@ -22,6 +22,11 @@ class UrlService
         $path = $data['customPath'];
 
         // check that it exists in DB and then return it
+        $urlDetails = Url::where('to', $userUrl)->get()->first();
+        if (!empty($urlDetails)) {
+            return $urlDetails;
+        }
+
         // else create a new one
         // save it in redis
         $this->database->beginTransaction();
@@ -30,6 +35,7 @@ class UrlService
         }
         try {
             $url = Url::create(['base_url_id' => 1, 'to' => $userUrl, 'alias' => $alias, 'path' => $path]);
+            $this->urlRepository->saveURLMapInCache($path, $userUrl);
         } catch (\Exception $e) {
             $this->database->rollBack();
             Log::error($e->getMessage());

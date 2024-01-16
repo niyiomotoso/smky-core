@@ -13,12 +13,12 @@ class CacheRepository
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public static function getUrlByPath($path)
+    public static function getUrlByPath($path): string
     {
         return app('redis')->get(self::URL_PATH_PREFIX.$path);
     }
 
-    public static function saveURLMap($path, $to)
+    public static function saveURLMap($path, $to): void
     {
         app('redis')->set(self::URL_PATH_PREFIX.$path, $to);
     }

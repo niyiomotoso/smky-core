@@ -12,9 +12,18 @@ class UrlRepository
     {
         $to = CacheRepository::getUrlByPath($path);
         if (empty($to)) {
-            $to = Url::where('path', $to)->get()->first();
+            $urlDetails = Url::where('path', $to)->get(['to'])->first();
+            if (!empty($urlDetails)) {
+                $to = $urlDetails['to'];
+            }
         }
 
         return $to;
+    }
+
+    public function saveURLMapInCache($path, $to): bool
+    {
+        CacheRepository::saveURLMap($path, $to);
+        return true;
     }
 }
