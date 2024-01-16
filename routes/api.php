@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UrlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 $router->group(['prefix'=>'api/v1'], function() use ($router) {
-    $router->post('/create', 'UrlController@getURL');
+    $router->post('/create',  [UrlController::class, 'getURL']);
 });
 

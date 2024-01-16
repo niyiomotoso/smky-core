@@ -15,6 +15,8 @@ class UrlRepository
             $urlDetails = Url::where('path', $to)->get(['to'])->first();
             if (!empty($urlDetails)) {
                 $to = $urlDetails['to'];
+                // now save the found entry in cache
+                $this->saveURLMapInCache($path, $to);
             }
         }
 
