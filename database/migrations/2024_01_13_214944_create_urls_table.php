@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('urls', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('to')->unique();
+            $table->string('to');
             $table->string('base_url_id');
             $table->string('alias')->nullable();
-            $table->string('path');
+            $table->string('path')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
