@@ -8,9 +8,13 @@ use App\Repository\Cache\CacheRepository;
 class UrlRepository
 {
 
+    public function __construct(private CacheRepository $cacheRepository)
+    {
+    }
+
     public function getURLByPath(string $path): string | null
     {
-        $to = CacheRepository::getUrlByPath($path);
+        $to = $this->cacheRepository->getUrlByPath($path);
         if (empty($to)) {
             $urlDetails = Url::where('path', $to)->get(['to'])->first();
             if (!empty($urlDetails)) {
@@ -23,9 +27,25 @@ class UrlRepository
         return $to;
     }
 
+    public function getAllURLs(): array
+    {
+        return Url::get()->all();
+    }
+
+    public function reloadCache(): int
+    {
+        $urls = $this->getAllURLs();
+        $this->cacheRepository->deleteAllUrlKeys();
+        foreach ($urls as $url) {
+        $this->cacheRepository->saveURLMap($url->path, $url->to);
+        }
+
+        return count($urls);
+    }
+
     public function saveURLMapInCache($path, $to): bool
     {
-        CacheRepository::saveURLMap($path, $to);
+        $this->cacheRepository->saveURLMap($path, $to);
         return true;
     }
 }

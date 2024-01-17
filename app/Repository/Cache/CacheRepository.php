@@ -9,16 +9,35 @@ class CacheRepository
 {
     private const URL_PATH_PREFIX = 'url:path:';
 
+    private mixed $client;
+    public function __construct()
+    {
+        $this->client = app('redis');
+    }
+
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public static function getUrlByPath($path): string | null
+    public function getUrlByPath($path): string | null
     {
         return app('redis')->get(self::URL_PATH_PREFIX.$path);
     }
 
-    public static function saveURLMap($path, $to): void
+    public function getAllUrlKeys()
+    {
+        return app('redis')->keys(self::URL_PATH_PREFIX.'*');
+    }
+
+    public function deleteAllUrlKeys(): void
+    {
+        $keys = $this->getAllUrlKeys();
+        foreach ($keys as $key) {
+            $this->client->del($key);
+        }
+    }
+
+    public function saveURLMap($path, $to): void
     {
         app('redis')->set(self::URL_PATH_PREFIX.$path, $to);
     }
