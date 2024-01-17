@@ -20,11 +20,11 @@ class UrlController extends BaseController
     public function add(Request $request)
     {
         $rules = [
-            "url" => "required|url",
+            "url" => "required",
         ];
 
         $messages = [];
-        $this->validate($request, $rules, $messages);
+        $validated = $request->validate($rules);
         $url = $request->get('url');
         $alias = $request->get('alias');
         $customPath = $request->get('customPath');
@@ -40,6 +40,6 @@ class UrlController extends BaseController
             return$this->error_response("path is required", "path is required", 400);
 
         $url  = $this->urlService->getURLByPath($path);
-        return $this->success_response($url, "Password successfully changed");
+        return $this->success_response($url, "success");
     }
 }

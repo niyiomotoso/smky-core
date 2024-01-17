@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-$router->group(['prefix'=>'api/v1'], function() use ($router) {
-    $router->post('/create',  [UrlController::class, 'getURL']);
+$router->group(['prefix'=>'v1'], function() use ($router) {
+    $router->post('/create',  [UrlController::class, 'add']);
 });
 

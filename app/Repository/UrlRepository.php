@@ -8,7 +8,7 @@ use App\Repository\Cache\CacheRepository;
 class UrlRepository
 {
 
-    public function getURLByPath(string $path): string
+    public function getURLByPath(string $path): string | null
     {
         $to = CacheRepository::getUrlByPath($path);
         if (empty($to)) {

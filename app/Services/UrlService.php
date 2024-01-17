@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Log;
 class UrlService
 {
 
-    public function __construct(private DatabaseManager $database, private UrlRepository $urlRepository)
+    public function __construct(
+        private DatabaseManager $database,
+        private UrlRepository $urlRepository)
     {
     }
 
@@ -28,25 +30,27 @@ class UrlService
         }
 
         // else create a new one
-        // save it in redis
         $this->database->beginTransaction();
         if (empty($path)) {
             $path = CharacterGenerator::generateRandomString();
         }
         try {
             $url = Url::create(['base_url_id' => 1, 'to' => $userUrl, 'alias' => $alias, 'path' => $path]);
-            $this->urlRepository->saveURLMapInCache($path, $userUrl);
         } catch (\Exception $e) {
             $this->database->rollBack();
             Log::error($e->getMessage());
             throw $e;
         }
 
+        // save it in redis
+        $this->urlRepository->saveURLMapInCache($path, $userUrl);
+        $this->database->commit();
+
         return $url;
     }
 
 
-    public function getURLByPath(string $path): string
+    public function getURLByPath(string $path): string | null
     {
         return $this->urlRepository->getURLByPath($path);
     }

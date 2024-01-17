@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('to')->unique();
             $table->string('base_url_id');
-            $table->string('alias');
+            $table->string('alias')->nullable();
             $table->string('path');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
