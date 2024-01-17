@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Url;
+use App\Repository\Cache\CacheRepository;
 use App\Repository\UrlRepository;
 use App\Utility\CharacterGenerator;
 use Illuminate\Database\DatabaseManager;
@@ -49,9 +50,19 @@ class UrlService
         return $url;
     }
 
-
     public function getURLByPath(string $path): string | null
     {
         return $this->urlRepository->getURLByPath($path);
+    }
+
+
+    public function getAllURLs(): array
+    {
+        return $this->urlRepository->getAllURLs();
+    }
+
+    public function reloadCache(): int
+    {
+        return $this->urlRepository->reloadCache();
     }
 }

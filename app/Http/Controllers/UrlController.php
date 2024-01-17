@@ -23,12 +23,9 @@ class UrlController extends BaseController
             "url" => "required",
         ];
 
-        $messages = [];
-        $validated = $request->validate($rules);
         $url = $request->get('url');
         $alias = $request->get('alias');
         $customPath = $request->get('customPath');
-
         $data = $this->urlService->add(compact('url', 'alias', 'customPath'));
 
         return $this->success_response($data, "success");
@@ -41,5 +38,17 @@ class UrlController extends BaseController
 
         $url  = $this->urlService->getURLByPath($path);
         return $this->success_response($url, "success");
+    }
+
+    public function reloadCache()
+    {
+        $urlCount  = $this->urlService->reloadCache();
+        return $this->success_response($urlCount, "success");
+    }
+
+    public function getAllUrlsFromDB()
+    {
+        $urlCount  = $this->urlService->getAllURLs();
+        return $this->success_response($urlCount, "success");
     }
 }
