@@ -21,6 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 $router->group(['prefix'=>'v1/url'], function() use ($router) {
     $router->post('/create',  [UrlController::class, 'add']);
+    $router->get("/path/{path}", [UrlController::class, 'getURLByPath']);
+    $router->get("/origin/{origin}", [UrlController::class, 'getURLByOrigin']);
+});
+
+$router->group(['prefix'=>'internal'], function() use ($router) {
     $router->get('/cache/reload',  [UrlController::class, 'reloadCache']);
     $router->get('/db/all',  [UrlController::class, 'getAllUrlsFromDB']);
 });

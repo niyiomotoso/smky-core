@@ -27,6 +27,12 @@ class UrlRepository
         return $to;
     }
 
+    public function getURLByOrigin(string $path): string | null
+    {
+        //$urlDetails = Url::where('path', $to)->get(['to'])->first();
+        // return $to;
+    }
+
     public function getAllURLs(): array
     {
         return Url::get()->all();

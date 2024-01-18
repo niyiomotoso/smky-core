@@ -31,12 +31,21 @@ class UrlController extends BaseController
         return $this->success_response($data, "success");
     }
 
-    public function getURL($path)
+    public function getURLByPath($path)
     {
         if (empty($path))
             return$this->error_response("path is required", "path is required", 400);
 
         $url  = $this->urlService->getURLByPath($path);
+        return $this->success_response($url, "success");
+    }
+
+    public function getURLByOrigin($origin)
+    {
+        if (empty($origin))
+            return$this->error_response("origin is required", "origin is required", 400);
+
+        $url  = $this->urlService->getURLByOrigin($origin);
         return $this->success_response($url, "success");
     }
 

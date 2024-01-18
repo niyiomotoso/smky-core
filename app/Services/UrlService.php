@@ -61,6 +61,11 @@ class UrlService
         return $this->urlRepository->getURLByPath($path);
     }
 
+    public function getURLByOrigin(string $origin): string | null
+    {
+        return $this->urlRepository->getURLByOrigin($origin);
+    }
+
 
     public function getAllURLs(): array
     {

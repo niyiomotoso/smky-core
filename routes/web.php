@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-$router->get("/{path}", [UrlController::class, 'getURL']);
+$router->get("/{path}", [UrlController::class, 'getURLByPath']);
