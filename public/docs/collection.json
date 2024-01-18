@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "256f9d2c-9cf1-4603-a4cc-a15875e8fdb2",
+        "_postman_id": "fed412a7-72d1-4b12-ad28-0169cf8d92b7",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -59,7 +59,7 @@
                                 {
                                     "id": "path",
                                     "key": "path",
-                                    "value": "aut",
+                                    "value": "officia",
                                     "description": "The path."
                                 }
                             ]
@@ -123,7 +123,7 @@
                                 {
                                     "id": "origin",
                                     "key": "origin",
-                                    "value": "illo",
+                                    "value": "ducimus",
                                     "description": "The origin."
                                 }
                             ]

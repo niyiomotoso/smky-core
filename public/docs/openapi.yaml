@@ -52,7 +52,7 @@ paths:
         in: path
         name: path
         description: 'The path.'
-        example: aut
+        example: officia
         required: true
         schema:
           type: string
@@ -885,7 +885,7 @@ paths:
         in: path
         name: origin
         description: 'The origin.'
-        example: illo
+        example: ducimus
         required: true
         schema:
           type: string

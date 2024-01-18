@@ -52,13 +52,13 @@ endpoints:
         name: path
         description: 'The path.'
         required: true
-        example: aut
+        example: officia
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      path: aut
+      path: officia
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -103,13 +103,13 @@ endpoints:
         name: origin
         description: 'The origin.'
         required: true
-        example: illo
+        example: ducimus
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      origin: illo
+      origin: ducimus
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
