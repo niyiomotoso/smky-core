@@ -12,13 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the files
+      - name: Checkout Code Files
         uses: actions/checkout@v2
 
-      - name: Deploy to EC2
+      - name: Push to EC2
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.EC2_HOST }}
           REMOTE_USER: ${{ secrets.EC2_USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
+
+      - name: Deploy Actions
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} 'bash -s' < /var/www/smky-core/base/deploy/staging/run.sh
+
