@@ -25,5 +25,5 @@ jobs:
 
       - name: Deploy Actions
         run: |
-          sh /var/www/smky-core/base/deploy/staging/run.sh
+          sh deploy/staging/run.sh
         shell: bash
