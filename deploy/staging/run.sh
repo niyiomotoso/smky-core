@@ -1,6 +1,6 @@
 set -e
 
-cd /var/www/smky-core/base
+#cd /var/www/smky-core/base
 
 #laravel commands
 composer install --no-dev
