@@ -27,4 +27,5 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
           chmod 600 /tmp/private_key
-          ssh -o StrictHostKeyChecking=no -i /tmp/private_key ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} 'bash -s' < /var/www/smky-core/base/deploy/staging/run.sh
+          ssh -o StrictHostKeyChecking=no -i /tmp/private_key ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "bash -s" < /var/www/smky-core/deploy-script/file.sh
+          rm /tmp/private_key
