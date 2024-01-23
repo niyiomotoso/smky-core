@@ -4,8 +4,10 @@ set -e
 
 #laravel commands
 composer install --no-dev
-
-cp ../config/.env .env
+ls -la
+cd ../
+cp config/.env   .env
+cd base
 #php artisan migrate --force
 #php artisan db:seed --force
 php artisan cache:clear
