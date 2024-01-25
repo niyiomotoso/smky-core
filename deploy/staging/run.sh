@@ -11,7 +11,7 @@ php artisan cache:clear
 ####
 
 sudo rsync -a --exclude=live/ ./ live/
-sudo rm -r !(live)
+#sudo rm -r !(live)
 
 sudo chown -R www-data:www-data live
 sudo chmod -R 777 live/storage
