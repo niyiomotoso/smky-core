@@ -38,5 +38,5 @@ jobs:
 #            DB_USERNAME=${{ secrets.DB_USERNAME }}
 #            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
           script: |
-            sh deploy/staging/run.sh
+            sh /var/www/smky-core/base/deploy/staging/run.sh
 
