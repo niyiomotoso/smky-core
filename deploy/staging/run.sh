@@ -6,7 +6,7 @@ cd /var/www/smky-core/base
 composer install --no-dev
 #composer update
 cp ../config/.env .env
-#php artisan migrate --force
+php artisan migrate --force
 #php artisan db:seed --force
 php artisan cache:clear
 ####

@@ -24,25 +24,19 @@ jobs:
           TARGET: ${{ secrets.TARGET_DIR }}
 
 
-      - name: Run starting scripts
+      - name: Run deployment scripts
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          environment: |
-            DB_HOST=${{ secrets.DB_HOST }}
-            DB_PORT=${{ secrets.DB_PORT }}
-            DB_DATABASE=${{ secrets.DB_DATABASE }}
-            DB_USERNAME=${{ secrets.DB_USERNAME }}
-            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+#          environment: |
+#            DB_HOST=${{ secrets.DB_HOST }}
+#            DB_PORT=${{ secrets.DB_PORT }}
+#            DB_DATABASE=${{ secrets.DB_DATABASE }}
+#            DB_USERNAME=${{ secrets.DB_USERNAME }}
+#            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
           script: |
-            cd /var/www/smky-core/base
-            echo "DB_HOST=$DB_HOST" >> .env
-            echo "DB_PORT=$DB_PORT" >> .env
-            echo "DB_DATABASE=$DB_DATABASE" >> .env
-            echo "DB_USERNAME=$DB_USERNAME" >> .env
-            echo "DB_PASSWORD=DB_PASSWORD" >> .env
             sh deploy/staging/run.sh
 
