@@ -23,19 +23,32 @@ jobs:
           REMOTE_USER: ${{ secrets.EC2_USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
 
-      - name: Copy .env file
-        run: cp .env.example .env
 
-      - name: Set environment variables
-        run: |
-          echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env.production
-          echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env.production
-          echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env.production
-          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env.production
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env.production
+      - name: Run starting scripts
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /var/www/smky-core
+            ls -la
 
+#      - name: Copy .env file
+#        run: cp .env.example .env
+#
+#      - name: Set environment variables
+#        run: |
+#          echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env.production
+#          echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env.production
+#          echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env.production
+#          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env.production
+#          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env.production
+#
+#
+#      - name: Deploy Actions
+#        run: |
+#          sh deploy/staging/run.sh
+#        shell: bash
 
-      - name: Deploy Actions
-        run: |
-          sh deploy/staging/run.sh
-        shell: bash
