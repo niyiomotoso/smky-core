@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\UrlController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UrlController;
+use App\Http\Controllers\HealthCheckController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ $router->group(['prefix'=>'internal'], function() use ($router) {
     $router->get('/db/all',  [UrlController::class, 'getAllUrlsFromDB']);
 });
 
+$router->get('/health',  [HealthCheckController::class, 'healthcheck']);

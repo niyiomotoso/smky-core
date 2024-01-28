@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UrlController;
+use App\Http\Controllers\HealthCheckController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-$router->get("/{path}", [UrlController::class, 'getURLByPath']);
+$router->get("/{path}", [HealthCheckController::class, 'getURLByPath']);
