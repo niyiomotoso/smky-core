@@ -40,6 +40,15 @@ class UrlController extends BaseController
         return $this->success_response($url, "success");
     }
 
+    public function getOriginByPathFromCache($path)
+    {
+        if (empty($path))
+            return$this->error_response("path is required", "path is required", 400);
+
+        $url  = $this->urlService->getOriginByPathFromCache($path);
+        return $this->success_response($url, "success");
+    }
+
     public function getURLByOrigin($origin)
     {
         if (empty($origin))

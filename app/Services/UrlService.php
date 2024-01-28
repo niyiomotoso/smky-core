@@ -56,9 +56,14 @@ class UrlService
         return $url;
     }
 
-    public function getURLByPath(string $path): string | null
+    public function getURLByPath(string $path): array | null
     {
         return $this->urlRepository->getURLByPath($path);
+    }
+
+    public function getOriginByPathFromCache(string $path): string | null
+    {
+        return $this->urlRepository->getOriginByPathFromCache($path);
     }
 
     public function getURLByOrigin(string $origin): string | null

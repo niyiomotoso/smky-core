@@ -12,7 +12,7 @@ class UrlRepository
     {
     }
 
-    public function getURLByPath(string $path): string | null
+    public function getOriginByPathFromCache(string $path): string | null
     {
         $to = $this->cacheRepository->getUrlByPath($path);
         if (empty($to)) {
@@ -27,10 +27,30 @@ class UrlRepository
         return $to;
     }
 
-    public function getURLByOrigin(string $path): string | null
+    public function getURLByPath(string $path): array | null
     {
-        //$urlDetails = Url::where('path', $to)->get(['to'])->first();
-        // return $to;
+        $data = null;
+        $urlDetails = Url::where('path', $path)->get()->first();
+        if (!empty($urlDetails)) {
+            $to = $urlDetails['to'];
+            // now save the found entry in cache
+            $this->saveURLMapInCache($path, $to);
+
+            $data = $urlDetails;
+        }
+
+        return $data;
+    }
+
+    public function getURLByOrigin(string $origin): string | null
+    {
+        $data = null;
+        $urlDetails = Url::where('to', $origin)->get()->first();
+        if (!empty($urlDetails)) {
+            $data = $urlDetails;
+        }
+
+        return $data;
     }
 
     public function getAllURLs(): array
