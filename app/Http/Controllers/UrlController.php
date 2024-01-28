@@ -19,11 +19,10 @@ class UrlController extends BaseController
 
     public function add(Request $request)
     {
-        $rules = [
-            "url" => "required",
-        ];
-
         $url = $request->get('url');
+        if (empty($url))
+            return$this->error_response("url is required", "url is required", 400);
+
         $alias = $request->get('alias');
         $customPath = $request->get('customPath');
         $data = $this->urlService->add(compact('url', 'alias', 'customPath'));
