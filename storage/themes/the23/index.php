@@ -2,26 +2,26 @@
 	<img src="<?php echo assets('images/shapes.svg') ?>" class="img-fluid position-absolute top-0 start-0 w-100 h-100 animate-float opacity-50 zindex-0">
 	<div class="container position-relative zindex-1">
 		<?php echo message() ?>
-		<div class="row g-lg-5 py-15">
+		<div class="row g-lg-5">
 			<div class="col-lg-7 text-center text-lg-start">
-				<h1 class="display-4 fw-bolder my-4"><strong><?php ee('Intuitive, Secure<br>& Dynamic') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Links').'.',e('QR Codes').'.', e('Bio Pages').'.']) ?>"></span></strong></h1>
+				<h1 class="display-4 fw-bolder my-4"><strong><?php ee('World\'s fastest URL Shortener and QR Code Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
 				<p class="col-lg-10 fs-5 mb-5">
 					<?php echo config('themeconfig')->description ?? e('Boost your campaigns by creating dynamic Links, QR codes and Bio Pages and get instant analytics.') ?>
 				</p>
 				<?php message() ?>
 				<form method="post" action="<?php echo route('shorten') ?>" data-trigger="shorten-form" class="mt-3 mb-5 border rounded p-3 text-start">
 					<div class="input-group input-group-lg align-items-center">
-						<input type="text" class="form-control border-0" placeholder="<?php echo e("Paste a long url") ?>" name="url" id="url">
+						<input type="text" class="form-control border-5 m-xxl-2" placeholder="<?php echo e("Paste a long url") ?>" name="url" id="url">
 						<div class="input-group-append">
 							<?php if(config('user_history') && !\Core\Auth::logged() && $urls = \Helpers\App::userHistory()): ?>
 								<button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#userhistory"><i data-bs-toggle="tooltip" title="<?php ee('Your latest links') ?>" class="fa fa-clock-rotate-left"></i></button>
 							<?php endif ?>
 							<button class="btn btn-warning d-none" type="button"><?php ee('Copy') ?></button>
-							<button class="btn btn-primary" type="submit"><?php ee('Shorten') ?></button>
+                            <button class="btn btn-primary btn-lg" type="submit"><strong><?php ee('Shorten') ?></strong></button>
 						</div>
 					</div>
 					<?php if(!config('pro')): ?>
-						<a href="#advanced" data-bs-toggle="collapse" class="btn btn-sm btn-primary mb-2 mt-2"><?php ee('Advanced') ?></a>
+						<a href="#advanced" data-bs-toggle="collapse" class="btn btn-sm btn-primary mb-2 mt-2"><?php ee('Do More') ?></a>
 						<div class="collapse row" id="advanced">
 							<div class="col-md-6 mt-3">
 								<div class="form-group">
@@ -175,9 +175,9 @@
 							</div>
 						</div>
 						<div class="mt-3">
-							<img src="<?php echo assets('images/flags/jp.svg') ?>" class="icon rounded border">
+							<img src="<?php echo assets('images/flags/ng.svg') ?>" class="icon rounded border">
 							<span class="align-middle ms-2">
-								<?php ee('Japan') ?>
+								<?php ee('Nigeria') ?>
 							</span>
 							<div class="progress progress-sm mt-2">
 								<div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
@@ -577,7 +577,7 @@
 							<div class="text-center bg-primary py-5 px-2 px-lg-5 rounded">
 								<h3 class="h5 text-capitalize"><span class="gradient-primary fw-bolder clip-text"><?php ee('Powering') ?></span></h3>
 								<div class="h1">
-									<span class="counter"><?php echo $count->links ?></span>
+									<span class="counter"><?php echo "700,000" ?></span>
 									<span class="counter-extra">+</span>
 								</div>
 								<h3 class="h6 text-capitalize fw-bold"><?php ee('Links') ?></h3>
@@ -587,7 +587,7 @@
 							<div class="text-center bg-primary py-5 px-2 px-lg-5 rounded">
 								<h3 class="h5 text-capitalize"><span class="gradient-primary fw-bolder clip-text"><?php ee('Serving') ?></span></h3>
 								<div class="h1">
-									<span class="counter"><?php echo $count->clicks ?></span>
+									<span class="counter"><?php echo "15M" ?></span>
 									<span class="counter-extra">+</span>
 								</div>
 								<h3 class="h6 text-capitalize fw-bold"><?php ee('Clicks') ?></h3>
@@ -599,7 +599,7 @@
 							<div class="text-center bg-primary py-5 px-2 px-lg-5 rounded">
 								<h3 class="h5 text-capitalize"><span class="gradient-primary fw-bolder clip-text"><?php ee('Trusted by') ?></span></h3>
 								<div class="h1">
-									<span class="counter"><?php echo $count->users ?></span>
+									<span class="counter"><?php echo "1.2M" ?></span>
 									<span class="counter-extra">+</span>
 								</div>
 								<h3 class="h6 text-capitalize fw-bold"><?php ee('Amazing Customers') ?></h3>
