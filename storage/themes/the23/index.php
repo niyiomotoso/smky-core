@@ -1,10 +1,10 @@
 <section id="hero" class="position-relative py-5">
-	<img src="<?php echo assets('images/shapes.svg') ?>" class="img-fluid position-absolute top-0 start-0 w-100 h-100 animate-float opacity-50 zindex-0">
+<!--	<img src="--><?php //echo assets('images/shapes.svg') ?><!--" class="img-fluid position-absolute top-0 start-0 w-100 h-100 animate-float opacity-50 zindex-0">-->
 	<div class="container position-relative zindex-1">
 		<?php echo message() ?>
 		<div class="row g-lg-5">
 			<div class="col-lg-7 text-center text-lg-start">
-				<h1 class="display-4 fw-bolder my-4"><strong><?php ee('World\'s fastest URL Shortener and QR Code Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
+				<h1 class="display-4 fw-bolder my-4"><strong><?php ee('World\'s leading URL Shortener, QR Code and Link-in-bio Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
 				<p class="col-lg-10 fs-5 mb-5">
 					<?php echo config('themeconfig')->description ?? e('Boost your campaigns by creating dynamic Links, QR codes and Bio Pages and get instant analytics.') ?>
 				</p>

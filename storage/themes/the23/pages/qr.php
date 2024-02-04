@@ -1,5 +1,5 @@
 <section id="hero" class="position-relative py-5">
-	<img src="<?php echo assets('images/shapes.svg') ?>" class="img-fluid position-absolute top-0 start-0 w-100 h-100 animate-float opacity-50 zindex-0">
+<!--	<img src="--><?php //echo assets('images/shapes.svg') ?><!--" class="img-fluid position-absolute top-0 start-0 w-100 h-100 animate-float opacity-50 zindex-0">-->
     <div class="container position-relative" data-offset-top="#navbar-main">
         <?php if(config('publicqr')): ?>
             <div class="d-block d-md-flex align-items-center">
