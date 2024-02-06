@@ -84,9 +84,13 @@ class Sitemap {
 		
 		if(config('report')){
 			echo $this->url(route('report'),  date("c", filemtime(View::$path."/pages/contact.php")));
-		}        
-        
-		if(config('api')) {
+		}
+
+        if(config('privacy')){
+            echo $this->url(route('privacy'),  date("c", filemtime(View::$path."/pages/privacy.php")));
+        }
+
+        if(config('api')) {
         	echo $this->url(route('apidocs'),  date("c", filemtime(ROOT."/app/config/api.php")));
 		}
 
