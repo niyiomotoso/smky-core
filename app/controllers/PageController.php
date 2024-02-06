@@ -88,9 +88,6 @@ class Page {
      * @return void
      */
     public function privacy(){
-
-        if(!config('privacy')) stop(404);
-
         View::set('title', e('Privacy Policy'));
 
         // @group Plugin
