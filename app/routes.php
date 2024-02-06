@@ -42,6 +42,9 @@ Gem::get($prefix.'/page/{page}', 'Page@index')->name('page')->middleware('CheckD
 Gem::get($prefix.'/qr-codes', 'Page@qr')->name('page.qr')->middleware('CheckDomain')->middleware('CheckMaintenance');
 Gem::get($prefix.'/bio-profiles', 'Page@bio')->name('page.bio')->middleware('CheckDomain')->middleware('CheckMaintenance');
 
+// Privacy Page
+Gem::get($prefix.'/privacy', 'Page@privacy')->name('privacy')->middleware('CheckDomain')->middleware('CheckPrivate');
+
 // Contact Page
 Gem::get($prefix.'/contact', 'Page@contact')->name('contact')->middleware('CheckDomain')->middleware('CheckPrivate');
 Gem::post($prefix.'/contact/send', 'Page@contactSend')->middleware('CheckPrivate')->middleware('BlockBot')->middleware('CheckDomain')->middleware('ValidateCaptcha')->name('contact.send');

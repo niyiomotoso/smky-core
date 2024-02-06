@@ -78,7 +78,26 @@ class Page {
         Plugin::dispatch('contact');
 
         return View::with('pages.contact')->extend('layouts.main');
-    }   
+    }
+
+    /**
+     * Privacy Page
+     *
+     * @author GemPixel <https://gempixel.com>
+     * @version 6.0
+     * @return void
+     */
+    public function privacy(){
+
+        if(!config('privacy')) stop(404);
+
+        View::set('title', e('Privacy Policy'));
+
+        // @group Plugin
+        Plugin::dispatch('privacy');
+
+        return View::with('pages.privacy')->extend('layouts.main');
+    }
 
     /**
      * Send Contact Form

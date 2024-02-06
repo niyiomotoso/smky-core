@@ -229,6 +229,7 @@ return [
         #: storage/themes/the23/pages/contact.php:5
         #: storage/themes/the23/partials/footer.php:81
         "Contact Us" => "",
+        "Privacy Policy" => "",
 
         #: app/controllers/PageController.php:98
         #: app/controllers/PageController.php:167
