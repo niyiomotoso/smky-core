@@ -97,6 +97,22 @@ class Page {
     }
 
     /**
+     * Terms of Service Page
+     *
+     * @author GemPixel <https://gempixel.com>
+     * @version 6.0
+     * @return void
+     */
+    public function terms(){
+        View::set('title', e('Terms of Service'));
+
+        // @group Plugin
+        Plugin::dispatch('terms');
+
+        return View::with('pages.terms')->extend('layouts.main');
+    }
+
+    /**
      * Send Contact Form
      *
      * @author GemPixel <https://gempixel.com> 
