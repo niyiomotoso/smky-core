@@ -7,6 +7,8 @@ composer install --no-dev
 
 cd ../
 cp live/config.php base/
+# might need to remove this later so as to change the color
+cp live/public/content/variables.css base/public/content/variables.css
 sudo rm -r backup
 sudo mv live backup
 mv base live
