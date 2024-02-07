@@ -4,41 +4,59 @@
 		<?php echo message() ?>
 		<div class="row g-lg-5">
 			<div class="col-lg-7 text-center text-lg-start">
-				<h1 class="display-4 fw-bolder my-4"><strong><?php ee('World\'s leading URL Shortener, QR Code and Link-in-bio Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
-				<p class="col-lg-10 fs-5 mb-5">
-					<?php echo config('themeconfig')->description ?? e('Boost your campaigns by creating dynamic Links, QR codes and Bio Pages and get instant analytics.') ?>
-				</p>
-				<?php message() ?>
-				<form method="post" action="<?php echo route('shorten') ?>" data-trigger="shorten-form" class="mt-3 mb-5 border rounded p-3 text-start">
-					<div class="input-group input-group-lg align-items-center">
-						<input type="text" class="form-control border-5 m-xxl-2" placeholder="<?php echo e("Paste a long url") ?>" name="url" id="url">
-						<div class="input-group-append">
-							<?php if(config('user_history') && !\Core\Auth::logged() && $urls = \Helpers\App::userHistory()): ?>
-								<button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#userhistory"><i data-bs-toggle="tooltip" title="<?php ee('Your latest links') ?>" class="fa fa-clock-rotate-left"></i></button>
-							<?php endif ?>
-							<button class="btn btn-warning d-none" type="button"><?php ee('Copy') ?></button>
-                            <button class="btn btn-primary btn-lg" type="submit"><strong><?php ee('Shorten') ?></strong></button>
-						</div>
-					</div>
-					<?php if(!config('pro')): ?>
-						<a href="#advanced" data-bs-toggle="collapse" class="btn btn-sm btn-primary mb-2 mt-2"><?php ee('Do More') ?></a>
-						<div class="collapse row" id="advanced">
-							<div class="col-md-6 mt-3">
-								<div class="form-group">
-									<label for="custom" class="control-label fw-bold mb-2"><?php ee('Custom') ?></label>
-									<input type="text" class="form-control p-2" name="custom" id="custom" placeholder="<?php echo e("Type your custom alias here")?>" autocomplete="off">
-								</div>
-							</div>
-							<div class="col-md-6 mt-3">
-								<div class="form-group">
-									<label for="pass" class="control-label fw-bold mb-2"><?php ee('Password Protection') ?></label>
-									<input type="text" class="form-control p-2" name="pass" id="pass" placeholder="<?php echo e("Type your password here")?>" autocomplete="off">
-								</div>
-							</div>
-						</div>
-					<?php endif ?>
-					<?php if(!\Core\Auth::logged()) { echo \Helpers\Captcha::display('shorten'); } ?>
-				</form>				
+				<h1 class="display-5 fw-bolder my-5"><strong><?php ee('World\'s leading URL Shortener, QR Code and Link-in-bio Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
+<!--				<p class="col-lg-10 fs-5 mb-5">-->
+<!--					--><?php //echo config('themeconfig')->description ?? e('Boost your campaigns by creating dynamic Links, QR codes and Bio Pages and get instant analytics.') ?>
+<!--				</p>-->
+
+
+
+                <div class="mb-3">
+                    <?php message() ?>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" id="myTabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="tab1" data-toggle="tab" href="/"><b>Short Link</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab2" data-toggle="tab" href="/qr-codes">QR Code</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab3" data-toggle="tab" href="/bio-profiles">Link in Bio</a>
+                        </li>
+                    </ul>
+                    <form method="post" action="<?php echo route('shorten') ?>" data-trigger="shorten-form" class="border-bottom custom-border mb-5 p-3 text-start">
+                        <div class="input-group input-group-lg align-items-center">
+                            <input type="text" class="form-control border-5 m-xxl-2" placeholder="<?php echo e("Paste a long url") ?>" name="url" id="url">
+                            <div class="input-group-append">
+                                <?php if(config('user_history') && !\Core\Auth::logged() && $urls = \Helpers\App::userHistory()): ?>
+                                    <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#userhistory"><i data-bs-toggle="tooltip" title="<?php ee('Your latest links') ?>" class="fa fa-clock-rotate-left"></i></button>
+                                <?php endif ?>
+                                <button class="btn btn-warning d-none" type="button"><?php ee('Copy') ?></button>
+                                <button class="btn btn-primary btn-lg" type="submit"><strong><?php ee('Shorten') ?></strong></button>
+                            </div>
+                        </div>
+                        <?php if(!config('pro')): ?>
+                            <a href="#advanced" data-bs-toggle="collapse" class="btn btn-sm btn-primary mb-2 mt-2"><?php ee('Do More') ?></a>
+                            <div class="collapse row" id="advanced">
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        <label for="custom" class="control-label fw-bold mb-2"><?php ee('Custom') ?></label>
+                                        <input type="text" class="form-control p-2" name="custom" id="custom" placeholder="<?php echo e("Type your custom alias here")?>" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        <label for="pass" class="control-label fw-bold mb-2"><?php ee('Password Protection') ?></label>
+                                        <input type="text" class="form-control p-2" name="pass" id="pass" placeholder="<?php echo e("Type your password here")?>" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif ?>
+                        <?php if(!\Core\Auth::logged()) { echo \Helpers\Captcha::display('shorten'); } ?>
+                    </form>
+                </div>
+
 				<div id="output-result" class="border border-success p-3 rounded d-none mb-3">
 					<div class="d-flex align-items-center">
 						<div id="qr-result" class="me-2"></div>
@@ -48,6 +66,9 @@
 						</div>
 					</div>
 				</div>
+
+
+
 				<?php if(\Core\DB::plans()->where('free', '1')->first()): ?>
 					<a href="<?php echo route('register') ?>" class="btn btn-primary px-4 py-3 fw-bold mb-1"><?php ee('Get Started for Free') ?></a>
 					<p>
@@ -661,3 +682,23 @@
 	</div>
 </div>
 <?php endif ?>
+
+<style>
+    .custom-border {
+        border-left: 1px solid #dee2e6; /* Left border width and color */
+        border-right: 1px solid #dee2e6; /* Right border width and color */
+        padding: 0; /* Optional: Add padding for better appearance */
+        border-radius: 0px 0px 6px 6px;
+    }
+</style>
+
+<script>
+    // JavaScript to handle tab redirects
+    document.getElementById('tab2').addEventListener('click', function() {
+        window.location.href = 'https://second.com';
+    });
+
+    document.getElementById('tab3').addEventListener('click', function() {
+        window.location.href = 'https://third.com';
+    });
+</script>
