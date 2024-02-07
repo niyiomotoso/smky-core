@@ -4,7 +4,7 @@
 		<?php echo message() ?>
 		<div class="row g-lg-5">
 			<div class="col-lg-7 text-center text-lg-start">
-				<h1 class="display-5 fw-bolder my-5"><strong><?php ee('World\'s leading Link Shortener, QR Code and Link-in-bio Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
+				<h1 class="display-5 fw-bolder my-5"><strong><?php ee('World\'s fastest Link Shortener, QR Code and Link-in-bio Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
 <!--				<p class="col-lg-10 fs-5 mb-5">-->
 <!--					--><?php //echo config('themeconfig')->description ?? e('Boost your campaigns by creating dynamic Links, QR codes and Bio Pages and get instant analytics.') ?>
 <!--				</p>-->
