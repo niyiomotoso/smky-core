@@ -6,7 +6,7 @@ cd /var/www/smky-core/base
 composer install --no-dev
 
 cd ../
-cp config/config.php base/
+cp live/config.php base/
 sudo rm -r backup
 sudo mv live backup
 mv base live
