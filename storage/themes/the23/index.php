@@ -4,7 +4,7 @@
 		<?php echo message() ?>
 		<div class="row g-lg-5">
 			<div class="col-lg-7 text-center text-lg-start">
-				<h1 class="display-5 fw-bolder my-5"><strong><?php ee('World\'s leading URL Shortener, QR Code and Link-in-bio Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
+				<h1 class="display-5 fw-bolder my-5"><strong><?php ee('World\'s leading Link Shortener, QR Code and Link-in-bio Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
 <!--				<p class="col-lg-10 fs-5 mb-5">-->
 <!--					--><?php //echo config('themeconfig')->description ?? e('Boost your campaigns by creating dynamic Links, QR codes and Bio Pages and get instant analytics.') ?>
 <!--				</p>-->
@@ -19,15 +19,15 @@
                             <a class="nav-link active" id="tab1" data-toggle="tab" href="/"><b>Short Link</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="tab2" data-toggle="tab" href="/qr-codes">QR Code</a>
+                            <a class="nav-link text-black" id="tab2" data-toggle="tab" href="/qr-codes">QR Code</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="tab3" data-toggle="tab" href="/bio-profiles">Link in Bio</a>
+                            <a class="nav-link text-black" id="tab3" data-toggle="tab" href="/bio-profiles">Link in Bio</a>
                         </li>
                     </ul>
                     <form method="post" action="<?php echo route('shorten') ?>" data-trigger="shorten-form" class="border-bottom custom-border mb-5 p-3 text-start">
                         <div class="input-group input-group-lg align-items-center">
-                            <input type="text" class="form-control border-5 m-xxl-2" placeholder="<?php echo e("Paste a long url") ?>" name="url" id="url">
+                            <input type="text" class="form-control border-5 m-2" placeholder="<?php echo e("Paste a long link") ?>" name="url" id="url">
                             <div class="input-group-append">
                                 <?php if(config('user_history') && !\Core\Auth::logged() && $urls = \Helpers\App::userHistory()): ?>
                                     <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#userhistory"><i data-bs-toggle="tooltip" title="<?php ee('Your latest links') ?>" class="fa fa-clock-rotate-left"></i></button>
