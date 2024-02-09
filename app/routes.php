@@ -502,10 +502,74 @@ Gem::group(appConfig('app.adminroute'), function(){
     Gem::get('/phpinfo', 'Admin\Dashboard@phpinfo')->name('admin.phpinfo');
 });
 
-// API
+// DEFAULT API
 Gem::group(appConfig('app.apiroute'), function(){
 
     Gem::setMiddleware(['Throttle', 'CheckDomain', 'Auth@api']);
+
+    Gem::get('/', 'API\Index@index');
+
+    // Account
+    Gem::get('/account', 'API\Account@get')->name("api.account.get");
+    Gem::put('/account/update', 'API\Account@update')->name("api.account.update");
+
+    // Links
+    Gem::get('/urls', 'API\Links@get')->name("api.url.get");
+    Gem::post('/url/add', 'API\Links@create')->name("api.url.create");
+    Gem::put('/url/{id}/update', 'API\Links@update')->name("api.url.update");
+    Gem::delete('/url/{id}/delete', 'API\Links@delete')->name("api.url.delete");
+    Gem::get('/url/{id}', 'API\Links@single')->name("api.url.single");
+
+    // QR Codes
+    Gem::get('/qr', 'API\QR@get')->name("api.qr.get");
+    Gem::post('/qr/add', 'API\QR@create')->name("api.qr.create");
+    Gem::put('/qr/{id}/update', 'API\QR@update')->name("api.qr.update");
+    Gem::delete('/qr/{id}/delete', 'API\QR@delete')->name("api.qr.delete");
+    Gem::get('/qr/{id}', 'API\QR@single')->name("api.qr.single");
+
+    Gem::get('/domains', 'API\Domains@get')->name("api.domain.get");
+    Gem::post('/domain/add', 'API\Domains@create')->name("api.domain.create");
+    Gem::put('/domain/{id}/update', 'API\Domains@update')->name("api.domain.update");
+    Gem::delete('/domain/{id}/delete', 'API\Domains@delete')->name("api.domain.delete");
+
+    Gem::get('/campaigns', 'API\Campaigns@get')->name("api.campaign.get");
+    Gem::post('/campaign/add', 'API\Campaigns@create')->name("api.campaign.create");
+    Gem::put('/campaign/{id}/update', 'API\Campaigns@update')->name("api.campaign.update");
+    Gem::post('/campaign/{id}/assign/{link}', 'API\Campaigns@assign')->name("api.campaign.assign");
+    Gem::delete('/campaign/{id}/delete', 'API\Campaigns@delete')->name("api.campaign.delete");
+
+    Gem::get('/channels', 'API\Channels@get')->name("api.channel.get");
+    Gem::get('/channel/{id}', 'API\Channels@single')->name("api.channel.single");
+    Gem::post('/channel/add', 'API\Channels@create')->name("api.channel.create");
+    Gem::put('/channel/{id}/update', 'API\Channels@update')->name("api.channel.update");
+    Gem::post('/channel/{id}/assign/{type}/{link}', 'API\Channels@assign')->name("api.channel.assign");
+    Gem::delete('/channel/{id}/delete', 'API\Channels@delete')->name("api.channel.delete");
+
+    Gem::get('/splash', 'API\Splash@get')->name("api.splash.get");
+    Gem::get('/overlay', 'API\Overlay@get')->name("api.overlay.get");
+
+    // Pixels
+    Gem::get('/pixels', 'API\Pixels@get')->name("api.pixels.get");
+    Gem::post('/pixel/add', 'API\Pixels@create')->name("api.pixel.create");
+    Gem::put('/pixel/{id}/update', 'API\Pixels@update')->name("api.pixel.update");
+    Gem::delete('/pixel/{id}/delete', 'API\Pixels@delete')->name("api.pixel.delete");
+
+    Gem::get('/users', 'API\Users@get')->name("api.user.get");
+    Gem::post('/user/add', 'API\Users@create')->name("api.user.create");
+    Gem::delete('/user/{id}/delete', 'API\Users@delete')->name("api.user.delete");
+    Gem::get('/user/{id}', 'API\Users@single')->name("api.user.single");
+    Gem::get('/user/login/{id}', 'API\Users@login')->name("api.user.login");
+
+    Gem::get('/plans', 'API\Plans@get')->name("api.plan.get");
+    Gem::put('/plan/{id}/user/{userid}', 'API\Plans@subscribe')->name("api.plan.subscribe");
+
+});
+
+
+// RAPID API
+Gem::group(appConfig('app.apiroute'), function(){
+    // DO NOT TURN THIS ON
+    // Gem::setMiddleware(['Throttle', 'CheckDomain', 'Auth@api']);
 
     Gem::get('/', 'API\Index@index');
 
