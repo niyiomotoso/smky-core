@@ -573,23 +573,32 @@ Gem::group(appConfig('app.apiroute'), function(){
 
     Gem::get('/', 'API\Index@index');
 
-    // Account
-    Gem::get('/account', 'API\Account@get')->name("api.account.get");
-    Gem::put('/account/update', 'API\Account@update')->name("api.account.update");
-
     // Links
-    Gem::get('/urls', 'API\Links@get')->name("api.url.get");
-    Gem::post('/url/add', 'API\Links@create')->name("api.url.create");
-    Gem::put('/url/{id}/update', 'API\Links@update')->name("api.url.update");
-    Gem::delete('/url/{id}/delete', 'API\Links@delete')->name("api.url.delete");
-    Gem::get('/url/{id}', 'API\Links@single')->name("api.url.single");
+    Gem::get('/ext/urls', 'API\Links@get')->name("api.url.get");
+    Gem::post('/ext/url/add', 'API\Links@create')->name("api.url.create");
+    Gem::put('/ext/url/{id}/update', 'API\Links@update')->name("api.url.update");
+    Gem::delete('/ext/url/{id}/delete', 'API\Links@delete')->name("api.url.delete");
+    Gem::get('/ext/url/{id}', 'API\Links@single')->name("api.url.single");
 
     // QR Codes
-    Gem::get('/qr', 'API\QR@get')->name("api.qr.get");
-    Gem::post('/qr/add', 'API\QR@create')->name("api.qr.create");
-    Gem::put('/qr/{id}/update', 'API\QR@update')->name("api.qr.update");
-    Gem::delete('/qr/{id}/delete', 'API\QR@delete')->name("api.qr.delete");
-    Gem::get('/qr/{id}', 'API\QR@single')->name("api.qr.single");
+    Gem::get('/ext/qr', 'API\QR@get')->name("api.qr.get");
+    Gem::post('/ext/qr/add', 'API\QR@create')->name("api.qr.create");
+    Gem::put('/ext/qr/{id}/update', 'API\QR@update')->name("api.qr.update");
+    Gem::delete('/ext/qr/{id}/delete', 'API\QR@delete')->name("api.qr.delete");
+    Gem::get('/ext/qr/{id}', 'API\QR@single')->name("api.qr.single");
+
+    // QR and Links Combined
+    Gem::get('/ext-cn/urls', 'API\Links@get')->name("api.url.get");
+    Gem::post('/ext-cn/url/add', 'API\Links@create')->name("api.url.create");
+    Gem::put('/ext-cn/url/{id}/update', 'API\Links@update')->name("api.url.update");
+    Gem::delete('/ext-cn/url/{id}/delete', 'API\Links@delete')->name("api.url.delete");
+    Gem::get('/ext-cn/url/{id}', 'API\Links@single')->name("api.url.single");
+
+    Gem::get('/ext-cn/qr', 'API\QR@get')->name("api.qr.get");
+    Gem::post('/ext-cn/qr/add', 'API\QR@create')->name("api.qr.create");
+    Gem::put('/ext-cn/qr/{id}/update', 'API\QR@update')->name("api.qr.update");
+    Gem::delete('/ext-cn/qr/{id}/delete', 'API\QR@delete')->name("api.qr.delete");
+    Gem::get('/ext-cn/qr/{id}', 'API\QR@single')->name("api.qr.single");
 
     Gem::get('/domains', 'API\Domains@get')->name("api.domain.get");
     Gem::post('/domain/add', 'API\Domains@create')->name("api.domain.create");
