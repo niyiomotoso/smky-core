@@ -188,6 +188,8 @@ return [
 	 */
 	'apiroute' => '/api',
 
+    'ext_apiroute' => '/ext/api',
+
 	/**
 	 * Route to Admin
 	 * 

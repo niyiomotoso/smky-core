@@ -502,6 +502,41 @@ Gem::group(appConfig('app.adminroute'), function(){
     Gem::get('/phpinfo', 'Admin\Dashboard@phpinfo')->name('admin.phpinfo');
 });
 
+// RAPID API
+Gem::group(appConfig('app.ext_apiroute'), function(){
+    // DO NOT TURN THIS ON
+    // Gem::setMiddleware(['Throttle', 'CheckDomain', 'Auth@api']);
+
+    Gem::get('/', 'API\Index@index');
+
+    // Links
+    Gem::get('/urls', 'API\Links@get')->name("ext.api.url.get");
+    Gem::post('/url/add', 'API\Links@create')->name("ext.api.url.create");
+    Gem::put('/url/{id}/update', 'API\Links@update')->name("ext.api.url.update");
+    Gem::delete('/url/{id}/delete', 'API\Links@delete')->name("ext.api.url.delete");
+    Gem::get('/url/{id}', 'API\Links@single')->name("ext.api.url.single");
+
+    // QR Codes
+    Gem::get('/qr', 'API\QR@get')->name("ext.api.qr.get");
+    Gem::post('/qr/add', 'API\QR@create')->name("ext.api.qr.create");
+    Gem::put('/qr/{id}/update', 'API\QR@update')->name("ext.api.qr.update");
+    Gem::delete('/qr/{id}/delete', 'API\QR@delete')->name("ext.api.qr.delete");
+    Gem::get('/qr/{id}', 'API\QR@single')->name("ext.api.qr.single");
+
+    // QR and Links Combined
+    Gem::get('/cn/urls', 'API\Links@get')->name("ext.api.cn.url.get");
+    Gem::post('/cn/url/add', 'API\Links@create')->name("ext.api.cn.url.create");
+    Gem::put('/cn/url/{id}/update', 'API\Links@update')->name("ext.api.cn.url.update");
+    Gem::delete('/cn/url/{id}/delete', 'API\Links@delete')->name("ext.api.cn.url.delete");
+    Gem::get('/cn/url/{id}', 'API\Links@single')->name("ext.api.cn.url.single");
+
+    Gem::get('/cn/qr', 'API\QR@get')->name("ext.api.cn.qr.get");
+    Gem::post('/cn/qr/add', 'API\QR@create')->name("ext.api.cn.qr.create");
+    Gem::put('/cn/qr/{id}/update', 'API\QR@update')->name("ext.api.cn.qr.update");
+    Gem::delete('/cn/qr/{id}/delete', 'API\QR@delete')->name("ext.api.cn.qr.delete");
+    Gem::get('/cn/qr/{id}', 'API\QR@single')->name("ext.api.cn.qr.single");
+});
+
 // DEFAULT API
 Gem::group(appConfig('app.apiroute'), function(){
 
@@ -565,78 +600,6 @@ Gem::group(appConfig('app.apiroute'), function(){
 
 });
 
-
-// RAPID API
-Gem::group(appConfig('app.apiroute'), function(){
-    // DO NOT TURN THIS ON
-    // Gem::setMiddleware(['Throttle', 'CheckDomain', 'Auth@api']);
-
-    Gem::get('/', 'API\Index@index');
-
-    // Links
-    Gem::get('/ext/urls', 'API\Links@get')->name("api.url.get");
-    Gem::post('/ext/url/add', 'API\Links@create')->name("api.url.create");
-    Gem::put('/ext/url/{id}/update', 'API\Links@update')->name("api.url.update");
-    Gem::delete('/ext/url/{id}/delete', 'API\Links@delete')->name("api.url.delete");
-    Gem::get('/ext/url/{id}', 'API\Links@single')->name("api.url.single");
-
-    // QR Codes
-    Gem::get('/ext/qr', 'API\QR@get')->name("api.qr.get");
-    Gem::post('/ext/qr/add', 'API\QR@create')->name("api.qr.create");
-    Gem::put('/ext/qr/{id}/update', 'API\QR@update')->name("api.qr.update");
-    Gem::delete('/ext/qr/{id}/delete', 'API\QR@delete')->name("api.qr.delete");
-    Gem::get('/ext/qr/{id}', 'API\QR@single')->name("api.qr.single");
-
-    // QR and Links Combined
-    Gem::get('/ext-cn/urls', 'API\Links@get')->name("api.url.get");
-    Gem::post('/ext-cn/url/add', 'API\Links@create')->name("api.url.create");
-    Gem::put('/ext-cn/url/{id}/update', 'API\Links@update')->name("api.url.update");
-    Gem::delete('/ext-cn/url/{id}/delete', 'API\Links@delete')->name("api.url.delete");
-    Gem::get('/ext-cn/url/{id}', 'API\Links@single')->name("api.url.single");
-
-    Gem::get('/ext-cn/qr', 'API\QR@get')->name("api.qr.get");
-    Gem::post('/ext-cn/qr/add', 'API\QR@create')->name("api.qr.create");
-    Gem::put('/ext-cn/qr/{id}/update', 'API\QR@update')->name("api.qr.update");
-    Gem::delete('/ext-cn/qr/{id}/delete', 'API\QR@delete')->name("api.qr.delete");
-    Gem::get('/ext-cn/qr/{id}', 'API\QR@single')->name("api.qr.single");
-
-    Gem::get('/domains', 'API\Domains@get')->name("api.domain.get");
-    Gem::post('/domain/add', 'API\Domains@create')->name("api.domain.create");
-    Gem::put('/domain/{id}/update', 'API\Domains@update')->name("api.domain.update");
-    Gem::delete('/domain/{id}/delete', 'API\Domains@delete')->name("api.domain.delete");
-
-    Gem::get('/campaigns', 'API\Campaigns@get')->name("api.campaign.get");
-    Gem::post('/campaign/add', 'API\Campaigns@create')->name("api.campaign.create");
-    Gem::put('/campaign/{id}/update', 'API\Campaigns@update')->name("api.campaign.update");
-    Gem::post('/campaign/{id}/assign/{link}', 'API\Campaigns@assign')->name("api.campaign.assign");
-    Gem::delete('/campaign/{id}/delete', 'API\Campaigns@delete')->name("api.campaign.delete");
-
-    Gem::get('/channels', 'API\Channels@get')->name("api.channel.get");
-    Gem::get('/channel/{id}', 'API\Channels@single')->name("api.channel.single");
-    Gem::post('/channel/add', 'API\Channels@create')->name("api.channel.create");
-    Gem::put('/channel/{id}/update', 'API\Channels@update')->name("api.channel.update");
-    Gem::post('/channel/{id}/assign/{type}/{link}', 'API\Channels@assign')->name("api.channel.assign");
-    Gem::delete('/channel/{id}/delete', 'API\Channels@delete')->name("api.channel.delete");
-
-    Gem::get('/splash', 'API\Splash@get')->name("api.splash.get");
-    Gem::get('/overlay', 'API\Overlay@get')->name("api.overlay.get");
-
-    // Pixels
-    Gem::get('/pixels', 'API\Pixels@get')->name("api.pixels.get");
-    Gem::post('/pixel/add', 'API\Pixels@create')->name("api.pixel.create");
-    Gem::put('/pixel/{id}/update', 'API\Pixels@update')->name("api.pixel.update");
-    Gem::delete('/pixel/{id}/delete', 'API\Pixels@delete')->name("api.pixel.delete");
-
-    Gem::get('/users', 'API\Users@get')->name("api.user.get");
-    Gem::post('/user/add', 'API\Users@create')->name("api.user.create");
-    Gem::delete('/user/{id}/delete', 'API\Users@delete')->name("api.user.delete");
-    Gem::get('/user/{id}', 'API\Users@single')->name("api.user.single");
-    Gem::get('/user/login/{id}', 'API\Users@login')->name("api.user.login");
-
-    Gem::get('/plans', 'API\Plans@get')->name("api.plan.get");
-    Gem::put('/plan/{id}/user/{userid}', 'API\Plans@subscribe')->name("api.plan.subscribe");
-
-});
 
 Gem::group('/crons', function(){
     Gem::get('/users/{id}', 'Cron@user')->name('crons.user');
