@@ -505,7 +505,7 @@ Gem::group(appConfig('app.adminroute'), function(){
 // RAPID API
 Gem::group(appConfig('app.general_apiroute'), function(){
     Gem::get('/health', 'API\Index@index');
-}
+});
 
 Gem::group(appConfig('app.ext_apiroute'), function(){
     Gem::setMiddleware(['Auth@rapidApi']);
