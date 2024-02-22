@@ -152,9 +152,7 @@ final class Auth {
 
         $request = new Request();
 
-        $key = str_replace('Token ', '', $request->server('redirect_http_x_rapidapi_key') ?? $request->server('http_x_rapidapi_key'));
-
-        $key = str_replace('Bearer ', '', $key);
+        $key = $request->server('redirect_http_x_rapidapi_key') ?? $request->server('http_x_rapidapi_key');
 
         $user =  \Core\Auth::ApiUser($key);
 
