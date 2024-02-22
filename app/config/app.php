@@ -188,6 +188,8 @@ return [
 	 */
 	'apiroute' => '/api',
 
+    'general_apiroute' => '/general/api',
+
     'ext_apiroute' => '/ext/api',
 
 	/**

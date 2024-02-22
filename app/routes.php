@@ -503,11 +503,12 @@ Gem::group(appConfig('app.adminroute'), function(){
 });
 
 // RAPID API
+Gem::group(appConfig('app.general_apiroute'), function(){
+    Gem::get('/health', 'API\Index@index');
+}
+
 Gem::group(appConfig('app.ext_apiroute'), function(){
     Gem::setMiddleware(['Auth@rapidApi']);
-
-    Gem::get('/', 'API\Index@index');
-
     // Links
     Gem::get('/urls', 'API\Links@get')->name("ext.api.url.get");
     Gem::post('/url/add', 'API\Links@create')->name("ext.api.url.create");
