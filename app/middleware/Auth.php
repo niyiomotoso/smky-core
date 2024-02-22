@@ -152,12 +152,12 @@ final class Auth {
 
         $request = new Request();
 
-        $key = $request->server('redirect_http_x_rapidapi_key') ?? $request->server('http_x_rapidapi_key');
+        $key = $request->server('redirect_http_x_api_key') ?? $request->server('http_x_api_key');
 
         $user =  \Core\Auth::ApiUser($key);
 
         if(!$key || empty($key)){
-            die(Response::factory(['error' => 1, 'message' => 'A valid API key is required to use this service.'], 403)->json());
+            die(Response::factory(['error' => 1, 'message' => 'A valid X-API-KEY is required. It should be the same value as the X-RapidAPI-Key'], 403)->json());
         }
 
         if($user == false){
