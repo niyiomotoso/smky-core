@@ -169,7 +169,7 @@ final class Auth {
             $user->email = sprintf("%s_%s@lunolink.com", $rapidApiPrefix, $userKey);
             Helper::set("hashCost", 8);
             $user->password = Helper::Encode($userKey);
-            $user->planid = 1;
+            $user->planid = 0;
             $user->date = Helper::dtime();
             $user->api = $key;
             $user->uniquetoken = Helper::rand(32);
