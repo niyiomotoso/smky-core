@@ -504,8 +504,7 @@ Gem::group(appConfig('app.adminroute'), function(){
 
 // RAPID API
 Gem::group(appConfig('app.ext_apiroute'), function(){
-    // DO NOT TURN THIS ON
-    // Gem::setMiddleware(['Throttle', 'CheckDomain', 'Auth@api']);
+    Gem::setMiddleware(['Auth@rapidApi']);
 
     Gem::get('/', 'API\Index@index');
 

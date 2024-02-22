@@ -18,6 +18,7 @@
 
 namespace Middleware;
 
+use Core\DB;
 use Core\Helper;
 use Core\Request;
 use Core\Response;
@@ -139,5 +140,51 @@ final class Auth {
 		
 		return true;
 	}
+
+    /**
+     * Check Auth via RAPID API
+     * custom addition
+     * @return void
+     */
+    public function rapidApi(){
+
+        if(!config("api")) die(Response::factory(['error' => 1, 'message' => 'API service is disabled.'], 403)->json());
+
+        $request = new Request();
+
+        $key = str_replace('Token ', '', $request->server('redirect_http_x_rapidapi_key') ?? $request->server('http_x_rapidapi_key'));
+
+        $key = str_replace('Bearer ', '', $key);
+
+        $user =  \Core\Auth::ApiUser($key);
+
+        if(!$key || empty($key)){
+            die(Response::factory(['error' => 1, 'message' => 'A valid API key is required to use this service.'], 403)->json());
+        }
+
+        if($user == false){
+            // create new account for the user
+            $user = DB::user()->create();
+            $userKey = Helper::rand(10);
+            $rapidApiPrefix = "rapidApiUser";
+            $user->username = sprintf("%s_%s", $rapidApiPrefix, $userKey);
+            $user->email = sprintf("%s_%s@lunolink.com", $rapidApiPrefix, $userKey);
+            Helper::set("hashCost", 8);
+            $user->password = Helper::Encode($userKey);
+            $user->planid = 1;
+            $user->date = Helper::dtime();
+            $user->api = $key;
+            $user->uniquetoken = Helper::rand(32);
+            $user->public = 0;
+            $user->auth_key = Helper::Encode(Helper::rand(32).Helper::dtime());
+            $user->active = 1;
+
+            $user->save();
+            // reload user
+            $user =  \Core\Auth::ApiUser($key);
+        }
+
+        return true;
+    }
 
 }
