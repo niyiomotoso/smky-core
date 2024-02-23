@@ -524,17 +524,17 @@ Gem::group(appConfig('app.ext_apiroute'), function(){
     Gem::get('/qr/{id}', 'API\QR@single')->name("ext.api.qr.single");
 
     // QR and Links Combined
-    Gem::get('/cn/urls', 'API\Links@get')->name("ext.api.cn.url.get");
-    Gem::post('/cn/url/add', 'API\Links@create')->name("ext.api.cn.url.create");
-    Gem::put('/cn/url/{id}/update', 'API\Links@update')->name("ext.api.cn.url.update");
-    Gem::delete('/cn/url/{id}/delete', 'API\Links@delete')->name("ext.api.cn.url.delete");
-    Gem::get('/cn/url/{id}', 'API\Links@single')->name("ext.api.cn.url.single");
-
-    Gem::get('/cn/qr', 'API\QR@get')->name("ext.api.cn.qr.get");
-    Gem::post('/cn/qr/add', 'API\QR@create')->name("ext.api.cn.qr.create");
-    Gem::put('/cn/qr/{id}/update', 'API\QR@update')->name("ext.api.cn.qr.update");
-    Gem::delete('/cn/qr/{id}/delete', 'API\QR@delete')->name("ext.api.cn.qr.delete");
-    Gem::get('/cn/qr/{id}', 'API\QR@single')->name("ext.api.cn.qr.single");
+//    Gem::get('/cn/urls', 'API\Links@get')->name("ext.api.cn.url.get");
+//    Gem::post('/cn/url/add', 'API\Links@create')->name("ext.api.cn.url.create");
+//    Gem::put('/cn/url/{id}/update', 'API\Links@update')->name("ext.api.cn.url.update");
+//    Gem::delete('/cn/url/{id}/delete', 'API\Links@delete')->name("ext.api.cn.url.delete");
+//    Gem::get('/cn/url/{id}', 'API\Links@single')->name("ext.api.cn.url.single");
+//
+//    Gem::get('/cn/qr', 'API\QR@get')->name("ext.api.cn.qr.get");
+//    Gem::post('/cn/qr/add', 'API\QR@create')->name("ext.api.cn.qr.create");
+//    Gem::put('/cn/qr/{id}/update', 'API\QR@update')->name("ext.api.cn.qr.update");
+//    Gem::delete('/cn/qr/{id}/delete', 'API\QR@delete')->name("ext.api.cn.qr.delete");
+//    Gem::get('/cn/qr/{id}', 'API\QR@single')->name("ext.api.cn.qr.single");
 });
 
 // DEFAULT API
