@@ -13,6 +13,9 @@
                         <a href="#links" class="nav-link text-muted active" data-trigger="switcher"><i class="fa fa-layer-group me-2"></i> <span class="align-middle"><?php ee('Content') ?></span></a>
                     </li>
                     <li class="nav-item mb-3 mb-md-0">
+                        <a href="#defaultbios" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-layer-group me-2"></i> <span class="align-middle"><?php ee('Template Pages') ?></span></a>
+                    </li>
+                    <li class="nav-item mb-3 mb-md-0">
                         <a href="#social" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-share me-2"></i>  <span class="align-middle"><?php ee('Social Links') ?></span></a>
                     </li>
                     <li class="nav-item mb-3 mb-md-0">
@@ -36,6 +39,29 @@
     <?php echo csrf() ?>
     <div class="row">
         <div class="col-md-7" id="generator">
+            <div class="collapse switcher" id="defaultbios">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="me-3 mb-2 position-relative" style="max-width:200px">
+                                    <?php foreach($defaultBios as $category => $defaultBiosByCategory): ?>
+                                        <?php echo $category ?>
+                                        <br/>
+                                        <?php foreach($defaultBiosByCategory as $defaultBio): ?>
+                                            <a class="dropdown-item" href="<?php echo route('bio.applyDefaultBio', [$bio->id, $defaultBio->id]) ?>">
+                                                <?php echo $defaultBio->name ?>
+                                            </a>
+                                            <br/>
+                                            <br/>
+                                        <?php endforeach ?>
+                                    <?php endforeach ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="collapse switcher show" id="links">
                 <div class="card card-body shadow-sm">
                     <div class="row">

@@ -111,6 +111,16 @@ final class Helper {
 
     return new self();
   }
+
+    public static function formatDefaultBios(array $bios) : array
+    {
+        $result = [];
+      foreach ($bios as $bio) {
+          $result[$bio->category][] = $bio;
+      }
+
+      return $result;
+    }
   /**
    * Redirect Back
    * @author GemPixel <https://gempixel.com>

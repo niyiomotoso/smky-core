@@ -310,6 +310,14 @@ class Bio {
 
         $url = DB::url()->where('id', $bio->urlid)->first();
 
+        $defaultBios = [];
+
+        foreach(DB::defaultbios()->where('status', 1)->find() as $defaultBio) {
+            $defaultBios[] = $defaultBio;
+        }
+
+        $defaultBios = Helper::formatDefaultBios($defaultBios);
+
         $bio->data = json_decode($bio->data ?? '');
         $bio->responses = json_decode($bio->responses ?? '');
 
@@ -458,7 +466,7 @@ class Bio {
 
         $platforms = \Helpers\BioWidgets::socialPlatforms();
 
-        return View::with('bio.edit', compact('bio', 'domains', 'url', 'themes', 'platforms'))->extend('layouts.dashboard');
+        return View::with('bio.edit', compact('bio', 'domains', 'url', 'themes', 'platforms', 'defaultBios'))->extend('layouts.dashboard');
 
     }
     /**
@@ -932,6 +940,37 @@ class Bio {
 
         return Helper::redirect()->back()->with('success', 'Migration complete.');
     }
+
+    /**
+     * apply Default Bio
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function applyDefaultBio(int $id, int $defaultBioId){
+
+        $user = Auth::user();
+
+        $count = DB::profiles()->where('userid', Auth::user()->rID())->count();
+
+        $total = Auth::user()->hasLimit('bio');
+
+        \Models\Plans::checkLimit($count, $total);
+
+        if(!$profile = DB::profiles()->where('id', $id)->where('userid', $user->rID())->first()){
+            return Helper::redirect()->back()->with('danger', e('Profile does not exist.'));
+        }
+
+        if(!$defaultBio = DB::defaultbios()->where('id', $defaultBioId)->first()){
+            return Helper::redirect()->back()->with('danger', e('Profile does not exist.'));
+        }
+
+        $profile->data = $defaultBio->data;
+        $profile->save();
+
+        return Helper::redirect()->back()->with('success', e('New template applied.'));
+    }
+
     /**
      * Duplicate
      *

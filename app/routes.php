@@ -223,6 +223,7 @@ Gem::group($prefix.'/user', function(){
     Gem::get('/bio/{id}/delete/{nonce}', 'User\Bio@delete')->name('bio.delete');
     Gem::get('/bio/{id}/default', 'User\Bio@default')->name('bio.default');
     Gem::get('/bio/{id}/duplicate', 'User\Bio@duplicate')->name('bio.duplicate');
+    Gem::get('/bio/{id}/duplicate/{defaultBioId}', 'User\Bio@applyDefaultBio')->name('bio.applyDefaultBio');
     Gem::get('/bio/widgetjs', 'User\Bio@widgets')->name('bio.widgetjs');    
     
     Gem::get('/statistics', 'User\Stats@index')->name('user.stats');

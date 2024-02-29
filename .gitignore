@@ -3,7 +3,7 @@ config.php
 /vendor
 /storage/cache
 /storage/plugins
-
+.idea/
 # Ignore Files Types
 *.psd
 *.db
