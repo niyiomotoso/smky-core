@@ -7,7 +7,7 @@ composer install --no-dev
 
 cd ../
 cp live/config.php base/
-cp live/php-sql-migrate/.version base/php-sql-migrate
+cp live/php-sql-migrate/.version base/php-sql-migrate/
 #run migrations
 php base/php-sql-migrate/migrate.php migrate
 # might need to remove this later so as to change the color
