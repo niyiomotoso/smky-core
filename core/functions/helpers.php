@@ -172,6 +172,38 @@ if(!function_exists('uploads')){
 	  return View::uploads($name, $storage);
   }
 }
+
+if(!function_exists('extractBgColors')){
+    function extractBgColors($jsonString): array
+    {
+        // Decode the JSON string
+        $data = json_decode($jsonString, true);
+        $bgColor = '';
+        $gradientStartColor = '';
+        $gradientStopColor = '';
+        // Check if the necessary keys exist
+        if (isset($data['style']['bg'])) {
+            $bgColor = $data['style']['bg'];
+        }
+
+        // Check if the necessary keys exist
+        if (isset($data['style']['gradient']['start'])) {
+            $gradientStartColor = $data['style']['gradient']['start'];
+        }
+
+        // Check if the necessary keys exist
+        if (isset($data['style']['gradient']['stop'])) {
+            $gradientStopColor = $data['style']['gradient']['stop'];
+        }
+
+        // Return the extracted values
+        return [
+            'bg' => $bgColor,
+            'gradient_start' => $gradientStartColor,
+            'gradient_stop' => $gradientStopColor,
+        ];
+    }
+}
 /**
  * Redirect back
  *

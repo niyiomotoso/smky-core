@@ -40,27 +40,27 @@
     <div class="row">
         <div class="col-md-7" id="generator">
             <div class="collapse switcher" id="defaultbios">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="me-3 mb-2 position-relative" style="max-width:200px">
-                                    <?php foreach($defaultBios as $category => $defaultBiosByCategory): ?>
-                                        <?php echo $category ?>
-                                        <br/>
-                                        <?php foreach($defaultBiosByCategory as $defaultBio): ?>
-                                            <a class="dropdown-item" href="<?php echo route('bio.applyDefaultBio', [$bio->id, $defaultBio->id]) ?>">
-                                                <?php echo $defaultBio->name ?>
-                                            </a>
-                                            <br/>
-                                            <br/>
-                                        <?php endforeach ?>
-                                    <?php endforeach ?>
+                <?php foreach($defaultBios as $category => $defaultBiosByCategory): ?>
+                    <h4 class="fw-bold mb-3 mt-5"><?php echo $category ?></h4>
+                    <div class="card card-body shadow-sm">
+                        <div class="row mt-3">
+                            <br/>
+                            <?php foreach($defaultBiosByCategory as $defaultBio):
+                                $bgColors = extractBgColors($defaultBio->data);
+                                ?>
+                                <div class="col-6 col-sm-4 col-xl-3 mb-2">
+                                    <a  href="<?php echo route('bio.applyDefaultBio', [$bio->id, $defaultBio->id]) ?>">
+                                        <div role="button" class="d-block text-center border rounded p-3" style="height:100px;
+                                                background-color: <?php echo $bgColors['bg'] ?>; background-image: linear-gradient( <?php echo $bgColors['gradient_start'] ?>, <?php echo $bgColors['gradient_stop'] ?> );">
+                                            <div class="rounded-pill d-block pt-1 text-decoration-none" style="background:#fff;width:100%;height:30px;color: #000"><?php echo $defaultBio->name ?></div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
+                            <?php endforeach ?>
                         </div>
                     </div>
-                </div>
+                <?php endforeach ?>
+
             </div>
             <div class="collapse switcher show" id="links">
                 <div class="card card-body shadow-sm">

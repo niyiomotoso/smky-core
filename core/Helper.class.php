@@ -112,11 +112,11 @@ final class Helper {
     return new self();
   }
 
-    public static function formatDefaultBios(array $bios) : array
+    public static function formatDefaultBios(array $templates) : array
     {
         $result = [];
-      foreach ($bios as $bio) {
-          $result[$bio->category][] = $bio;
+      foreach ($templates as $template) {
+          $result[$template->category][] = $template;
       }
 
       return $result;
