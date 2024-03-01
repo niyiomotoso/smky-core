@@ -52,7 +52,8 @@
                                     <a  href="<?php echo route('bio.applyDefaultBio', [$bio->id, $defaultBio->id]) ?>">
                                         <div role="button" class="d-block text-center border rounded p-3" style="height:100px;
                                                 background-color: <?php echo $bgColors['bg'] ?>; background-image: linear-gradient( <?php echo $bgColors['gradient_start'] ?>, <?php echo $bgColors['gradient_stop'] ?> );">
-                                            <div class="rounded-pill d-block pt-1 text-decoration-none" style="background:#fff;width:100%;height:30px;color: #000"><?php echo $defaultBio->name ?></div>
+                                            <div class="rounded-pill d-block text-decoration-none" style="background:#fff;width:100%;height:20px;color: #000"><?php echo $defaultBio->name ?></div>
+                                            <div class="d-block pt-1" style="color: <?php echo $bgColors['text_color'] ?>;"><?php echo $defaultBio->description ?></div>
                                         </div>
                                     </a>
                                 </div>

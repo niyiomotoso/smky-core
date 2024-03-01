@@ -181,6 +181,7 @@ if(!function_exists('extractBgColors')){
         $bgColor = '';
         $gradientStartColor = '';
         $gradientStopColor = '';
+        $textColor = '';
         // Check if the necessary keys exist
         if (isset($data['style']['bg'])) {
             $bgColor = $data['style']['bg'];
@@ -196,11 +197,16 @@ if(!function_exists('extractBgColors')){
             $gradientStopColor = $data['style']['gradient']['stop'];
         }
 
+        if (isset($data['style']['textcolor'])) {
+            $textColor = $data['style']['textcolor'];
+        }
+
         // Return the extracted values
         return [
             'bg' => $bgColor,
             'gradient_start' => $gradientStartColor,
             'gradient_stop' => $gradientStopColor,
+            'text_color' => $textColor
         ];
     }
 }
