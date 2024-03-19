@@ -19,7 +19,7 @@
             <div class="col-md-5 text-center">
                 <div class="card gradient-primary border-0 shadow p-5">
                     <span class="rounded-circle mb-3 d-block bg-white mx-auto opacity-8" style="width:100px;height:100px"><img src="<?php echo assets('images/avatar-f1.svg') ?>" class="img-fluid rounded-circle"></span>
-                    <h3 class="text-white fw-bold"><span><?php echo config('title') ?></span></h3></em>
+                    <h3 class="text-white fw-bold"><span>Link in One - Artist</span></h3></em>
                     <div id="social" class="text-center mt-2">
                         <a href="<?php echo config('facebook') ?>" class="mx-2 text-white" data-bs-toggle="tooltip" title="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="<?php echo config('twitter') ?>" class="mx-2 text-white" data-bs-toggle="tooltip" title="Twitter"><i class="fab fa-x-twitter"></i></a>
