@@ -254,6 +254,14 @@ class Links {
             return Response::factory(['error' => 1, 'message' => 'Missing required parameter: url'])->json();
         }
 
+        if (!Helper::validateUrl($data->url)) {
+            return Response::factory(['error' => 1, 'message' => 'url supplied is invalid'])->json();
+        }
+
+        if (isset($data->custom) && !Helper::isString($data->custom)) {
+            return Response::factory(['error' => 1, 'message' => 'custom must be a valid string'])->json();
+        }
+
         if(isset($data->url) && !empty($data->url)) $link->url = Helper::clean($data->url, 3);
 
         $link->custom = (isset($data->custom) && !empty($data->custom)) ? clean($data->custom) : null;

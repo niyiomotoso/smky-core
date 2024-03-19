@@ -194,6 +194,16 @@ final class Helper {
     return $message;
   }
 
+   public static function validateUrl($url) {
+        // Use filter_var function with FILTER_VALIDATE_URL filter
+        return filter_var($url, FILTER_VALIDATE_URL) !== false;
+  }
+
+  public static function isString($var) {
+      // Check if the variable is a string and not empty
+      return is_string($var) && strlen($var) > 0;
+  }
+
  /**
   * Clean a string
   * @author  GemPixel <http://gempixel.com>
