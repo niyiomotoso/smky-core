@@ -310,9 +310,12 @@ class Bio {
 
         $url = DB::url()->where('id', $bio->urlid)->first();
 
+        // We connect the default bio accounts to be configurable/editable from super admin account with profile id = 1
+        // This means that whenever the admin user id 1 changes the profile data, it will affect the default bio that matches the changed profile id.
         $defaultBios = [];
-
-        foreach(DB::defaultbios()->where('status', 1)->find() as $defaultBio) {
+        $generalProfileTable = 'profiles';
+        $defaultBiosTable = 'defaultbios';
+        foreach(DB::defaultbios()->select("{$generalProfileTable}.*")->select("{$defaultBiosTable}.*")->select("{$generalProfileTable}.data", 'profile_data')->select("{$defaultBiosTable}.data", 'defaultbio_data')->join(DBprefix.'profiles', [DBprefix.'profiles.id' , '=', DBprefix.'defaultbios.profile_id'])->where('status', 1)->findMany() as $defaultBio) {
             $defaultBios[] = $defaultBio;
         }
 

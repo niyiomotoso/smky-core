@@ -116,6 +116,7 @@ final class Helper {
     {
         $result = [];
       foreach ($templates as $template) {
+          $template->data = $template->profile_data ?? $template->defaultbio_data;
           $result[$template->category][] = $template;
       }
 
