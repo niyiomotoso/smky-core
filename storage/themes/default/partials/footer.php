@@ -88,7 +88,7 @@
             <div class="row align-items-center justify-content-md-between pb-4">
                 <div class="col-md-4">
                     <div class="copyright text-sm font-weight-bold text-center text-md-left">
-                        &copy; <?php echo date("Y") ?> <a href="<?php echo config('url') ?>" class="font-weight-bold"><?php echo config('title') ?></a>. <?php ee('All Rights Reserved') ?>
+                        &copy; <?php echo date("Y") ?> <a href="<?php echo config('url') ?>" class="font-weight-bold">Lunolink</a>. <?php ee('All Rights Reserved') ?>
                     </div>
                 </div>
                 <div class="col-md-8">
