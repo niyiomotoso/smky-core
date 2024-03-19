@@ -3,7 +3,7 @@
         <div class="row align-items-center py-8">
             <div class="col-md-7">
                 <h1 class="display-4 fw-bold mb-4">
-                    <?php ee('Bio Pages') ?>
+                    <?php ee('Link in Bio') ?>
                 </h1>                    
                 <p class="lead opacity-8 ">
                     <?php ee('Convert your followers by creating beautiful pages that group all of your important links on the single page.') ?>
@@ -23,13 +23,18 @@
                     <div id="social" class="text-center mt-2">
                         <a href="<?php echo config('facebook') ?>" class="mx-2 text-white" data-bs-toggle="tooltip" title="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="<?php echo config('twitter') ?>" class="mx-2 text-white" data-bs-toggle="tooltip" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="<?php echo config('instagram') ?>" class="mx-2 text-white" data-bs-toggle="tooltip" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="<?php echo config('tiktok') ?>" class="mx-2 text-white" data-bs-toggle="tooltip" title="Tiktok"><i class="fab fa-tiktok"></i></a>
                     </div>
                     <div id="content" class="mt-5">
                         <div class="item mb-3">
-                            <a href="#" class="btn d-block btn-light text-primary shadow-sm py-3">🛒 <?php ee('New Merch') ?></a>
+                            <a href="#" class="btn d-block btn-light text-primary shadow-sm py-3">🔥 <?php ee('Past Events') ?></a>
                         </div>
                         <div class="item mb-3">
-                            <a href="#" class="btn d-block btn-light text-primary shadow-sm py-3">🔥 <?php ee('Shop') ?></a>
+                            <a href="#" class="btn d-block btn-light text-primary shadow-sm py-3"> 🏅<?php ee('Awards') ?></a>
+                        </div>
+                        <div class="item mb-3">
+                            <a href="#" class="btn d-block btn-light text-primary shadow-sm py-3">🛒 <?php ee('Shop') ?></a>
                         </div>
                     </div>                     
                 </div>               
