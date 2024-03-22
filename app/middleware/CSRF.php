@@ -27,7 +27,7 @@ final class CSRF extends Middleware {
 	 * Do not un CSRF for these routes
 	 * @var array
 	 */
-	protected $_exempt = ['shorten', 'user/qr/preview', 'api/*', 'admin/languages/translate', 'user/bio/'];
+	protected $_exempt = ['shorten', 'user/qr/preview', 'api/*', 'admin/languages/translate', 'user/bio/', 'createBio'];
 	/**
 	 * Error Message
 	 * @var string

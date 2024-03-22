@@ -231,3 +231,28 @@
 	</div>
   </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to check URL query parameter
+        function checkURLParameter() {
+            const urlParams = new URLSearchParams(window.location.search);
+            // Check if the query parameter 'open' exists and its value is 'true'
+            if (urlParams.has('openCreateModal') && urlParams.get('openCreateModal') === 'true') {
+                // Open the modal
+                const myModal = new bootstrap.Modal(document.getElementById('createModal'));
+                myModal.show();
+            }
+
+            // Check if the query parameter 'name' exists
+            if (urlParams.has('bioAlias')) {
+                // Get the value of the query parameter and set it as the value of the input field
+                const nameInput = document.getElementById('name');
+                nameInput.value = urlParams.get('bioAlias');
+            }
+        }
+
+        // Call the function when the DOM is fully loaded
+        checkURLParameter();
+    });
+</script>

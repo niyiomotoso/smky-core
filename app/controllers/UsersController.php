@@ -58,6 +58,18 @@ class Users {
         return View::with('auth.login')->extend('layouts.auth');
     }
 
+    public function createBio(Request $request){
+        $bioAlias = $request->bioAlias ?? 'mybio';
+        $params = ['openCreateModal' => 'true', 'bioAlias' => $bioAlias];
+
+        if(Auth::logged()) {
+            return Helper::redirect()->to(route('bio', $params));
+        } else {
+            $request->session('redirect', route('bio', $params));
+            return Helper::redirect()->to(route('register'));
+        }
+    }
+
     /**
      * Validate Login
      *

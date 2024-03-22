@@ -1,4 +1,17 @@
 <section class="py-4">
+    <style>
+        /* Custom CSS for the input field */
+        #bioAlias {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100px;
+            height: 30px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+    </style>
     <div class="container align-items-center" data-offset-top="#navbar-main">
         <div class="row align-items-center py-8">
             <div class="col-md-7">
@@ -7,14 +20,18 @@
                 </h1>                    
                 <p class="lead opacity-8 ">
                     <?php ee('Convert your followers by creating beautiful pages that group all of your important links on the single page.') ?>
-                </p>  
-                <div class="border rounded p-3 shadow-sm card mt-3 col-md-8">
-                    <h5 class="fw-bolder mb-0"><?php echo url() ?><span class="text-muted">yourname</span></h5>
-                </div>
-                <p class="my-5">
-                    <a href="<?php echo route('register') ?>" class="btn btn-primary px-5 py-3 fw-bold"><?php ee('Get Started') ?></a>
-                    <a href="<?php echo route('contact', ['subject' => 'Contact Sales']) ?>" class="btn btn-transparent text-dark fw-bold"><?php ee('Contact sales') ?></a>
-                </p>             
+                </p>
+                <form method="post" action="<?php echo route('createBio') ?>"  class="border-bottom custom-border mb-5 p-3 text-start">
+                    <div class="input-group input-group-lg align-items-center">
+                        <div class="border rounded p-3 shadow-sm card mt-3 col-md-8">
+                            <h5 class="fw-bolder mb-0"><?php echo url() ?><input type="text" id="bioAlias" name="bioAlias" class="input" required  placeholder="yourname" /></h5>
+                        </div>
+                    </div>
+                    <p class="my-5">
+                        <button class="btn btn-primary btn-lg" type="submit"><strong><?php ee('Get started') ?></strong></button>
+                        <a href="<?php echo route('contact', ['subject' => 'Contact Sales']) ?>" class="btn btn-transparent text-dark fw-bold"><?php ee('Contact sales') ?></a>
+                    </p>
+                </form>
             </div>
             <div class="col-md-5 text-center">
                 <div class="card gradient-primary border-0 shadow p-5">

@@ -87,6 +87,7 @@ Gem::route(['GET', 'POST'], '/u/{username}', 'Link@profile')->name('profile')->m
 Gem::group($prefix.'/user', function(){
 
     Gem::get('/login', 'Users@login')->middleware('CheckDomain')->middleware('UserLogged')->name('login');
+    Gem::post('/createBio', 'Users@createBio')->middleware('CheckDomain')->name('createBio');
     Gem::post('/login/auth', 'Users@loginAuth')->middleware('BlockBot')->middleware('CheckDomain')->middleware('UserLogged')->middleware('ValidateCaptcha')->name('login.auth');
     Gem::get('/login/2fa', 'Users@login2FA')->middleware('CheckDomain')->middleware('UserLogged')->name('login.2fa');
     Gem::post('/login/2fa/validate', 'Users@login2FAValidate')->middleware('CheckDomain')->middleware('UserLogged')->name('login.2fa.validate');
