@@ -1,11 +1,16 @@
 <section class="py-4">
     <style>
         /* Custom CSS for the input field */
+        ::placeholder {
+            color: black;
+            opacity: 1; /* Firefox */
+        }
         #bioAlias {
             border: 1px solid #ccc;
             border-radius: 5px;
+            color: #000;
             padding: 10px;
-            width: 100px;
+            width: 110px;
             height: 30px;
             margin-bottom: 10px;
             font-size: 16px;
