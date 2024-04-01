@@ -9,7 +9,7 @@
                     <div class="card-body p-4">
                         <section>
                             <h3>Introduction</h3>
-                            <p>Welcome to Lunolink. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our URL shortener, QR code generator, and Link in Bio services.</p>
+                            <p>Welcome to Linkdom. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our URL shortener, QR code generator, and Link in Bio services.</p>
                         </section>
 
                         <section>

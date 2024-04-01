@@ -29,7 +29,7 @@
                 <form method="post" action="<?php echo route('createBio') ?>"  class="border-bottom custom-border mb-5 p-3 text-start">
                     <div class="input-group input-group-lg align-items-center">
                         <div class="border rounded p-3 shadow-sm card mt-3 col-md-8">
-                            <h5 class="fw-bolder mb-0"><?php echo url() ?><input type="text" id="bioAlias" name="bioAlias" class="input" required  placeholder="yourname" /></h5>
+                            <h5 class="fw-bolder mb-0">https://linkdom.me/<input type="text" id="bioAlias" name="bioAlias" class="input" required  placeholder="yourname" /></h5>
                         </div>
                     </div>
                     <p class="my-5">

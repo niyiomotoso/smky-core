@@ -9,7 +9,7 @@
                     <div class="card-body p-4">
                         <section>
                             <h3>1. Acceptance of Terms</h3>
-                            <p>By accessing or using Lunolink, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+                            <p>By accessing or using Linkdom, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
                         </section>
 
                         <section>

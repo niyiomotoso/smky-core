@@ -136,6 +136,8 @@ class Bio {
     public function save(Request $request){
 
         $user = Auth::user();
+        // hardcode domain for Bio creation to be linkdom.me
+        $request->domain = "https://linkdom.me";
 
         if(Auth::user()->teamPermission('bio.create') == false){
 			return Response::factory(['error' => true, 'message' => e('You do not have this permission. Please contact your team administrator.'), 'token' => csrf_token()])->json();
