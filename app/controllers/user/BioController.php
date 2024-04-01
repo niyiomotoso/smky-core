@@ -202,8 +202,9 @@ class Bio {
         $url = DB::url()->create();
         $url->userid = $user->rID();
         $url->url = '';
-
-        if($request->domain && $this->validateDomainNames(trim($request->domain), $user, false)){
+        // disable domain name validation
+        // if($request->domain && $this->validateDomainNames(trim($request->domain), $user, false)){
+        if($request->domain){
             $url->domain = trim(clean($request->domain));
         }
 

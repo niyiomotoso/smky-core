@@ -90,10 +90,13 @@
                                 <label class="form-label"><?php ee('Bio Page Alias') ?></label>
                                 <div class="d-flex">
                                     <div class="input-select rounded">
+                                        <!--<select name="domain" id="domain" class="form-select p-2" data-toggle="select">
+                                            <?php /*foreach($domains as $domain): */?>
+                                                <option value="<?php /*echo $domain */?>" <?php /*echo $domain == $url->domain ? 'selected' : '' */?>><?php /*echo $domain */?></option>
+                                            <?php /*endforeach */?>
+                                        </select>-->
                                         <select name="domain" id="domain" class="form-select p-2" data-toggle="select">
-                                            <?php foreach($domains as $domain): ?>
-                                                <option value="<?php echo $domain ?>" <?php echo $domain == $url->domain ? 'selected' : '' ?>><?php echo $domain ?></option>
-                                            <?php endforeach ?>
+                                                <option value="<?php echo $url->domain  ?>" selected><?php echo $url->domain  ?></option>
                                         </select>
                                         <p class="form-text"><?php ee('Choose domain to generate the link with') ?></p>
                                     </div>

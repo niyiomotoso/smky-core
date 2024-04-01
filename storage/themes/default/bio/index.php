@@ -247,8 +247,8 @@
             // Check if the query parameter 'name' exists
             if (urlParams.has('bioAlias')) {
                 // Get the value of the query parameter and set it as the value of the input field
-                const nameInput = document.getElementById('name');
-                nameInput.value = urlParams.get('bioAlias');
+                const customInput = document.getElementById('custom');
+                customInput.value = urlParams.get('bioAlias');
             }
         }
 
