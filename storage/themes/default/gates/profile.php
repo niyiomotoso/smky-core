@@ -159,7 +159,7 @@
 <style>
     .created_with_linkdom {
         text-align: center;
-        position: absolute;
+        position: fixed;
         background-color: #030405;
         color: white;
         left: 50%;
