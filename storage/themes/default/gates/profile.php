@@ -115,12 +115,8 @@
     </div>
     <?php if(!isset($profiledata['settings']['branding']) || !$profiledata['settings']['branding']): ?>
     <div class="text-center mt-3 opacity-8">
-        <a class="navbar-brand mr-0 me-0" href="<?php echo route('home') ?>">
-            <?php if(config('logo')): ?>
-                <img alt="<?php echo $sitetitle ?? ''?>" src="<?php echo uploads(config('logo')) ?>" id="navbar-logo" width="180">
-            <?php else: ?>
-                <h1 class="h5 mt-2"><?php echo $sitetitle ?? ''?></h1>
-            <?php endif ?>
+        <a class="navbar-brand mr-0 me-0" href="<?php echo route('page.bio') ?>">
+            <button class="btn btn-sm created_with_linkdom" type="submit"><strong> ⚙️ Create your Linkdom.me</strong></button>
         </a>
     </div>
     <?php endif ?>
@@ -160,3 +156,16 @@
         </div>
     </div>
 <?php endif ?>
+<style>
+    .created_with_linkdom {
+        text-align: center;
+        position: absolute;
+        background-color: #030405;
+        color: white;
+        left: 50%;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        transform: translateX(-50%);
+        bottom: 0;
+    }
+</style>
