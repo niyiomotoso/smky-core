@@ -598,7 +598,7 @@
 							<div class="text-center bg-primary py-5 px-2 px-lg-5 rounded">
 								<h3 class="h5 text-capitalize"><span class="gradient-primary fw-bolder clip-text"><?php ee('Powering') ?></span></h3>
 								<div class="h1">
-									<span class="counter"><?php echo "700,000" ?></span>
+									<span class="counter"><?php echo "125,000" ?></span>
 									<span class="counter-extra">+</span>
 								</div>
 								<h3 class="h6 text-capitalize fw-bold"><?php ee('Links') ?></h3>
@@ -608,7 +608,7 @@
 							<div class="text-center bg-primary py-5 px-2 px-lg-5 rounded">
 								<h3 class="h5 text-capitalize"><span class="gradient-primary fw-bolder clip-text"><?php ee('Serving') ?></span></h3>
 								<div class="h1">
-									<span class="counter"><?php echo "15M" ?></span>
+									<span class="counter"><?php echo "1.2M" ?></span>
 									<span class="counter-extra">+</span>
 								</div>
 								<h3 class="h6 text-capitalize fw-bold"><?php ee('Clicks') ?></h3>
@@ -620,7 +620,7 @@
 							<div class="text-center bg-primary py-5 px-2 px-lg-5 rounded">
 								<h3 class="h5 text-capitalize"><span class="gradient-primary fw-bolder clip-text"><?php ee('Trusted by') ?></span></h3>
 								<div class="h1">
-									<span class="counter"><?php echo "1.2M" ?></span>
+									<span class="counter"><?php echo "45k" ?></span>
 									<span class="counter-extra">+</span>
 								</div>
 								<h3 class="h6 text-capitalize fw-bold"><?php ee('Amazing Customers') ?></h3>
