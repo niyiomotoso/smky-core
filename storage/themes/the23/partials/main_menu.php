@@ -9,7 +9,7 @@
                     <img alt="<?php echo config('title') ?>" src="<?php echo uploads(config('logo')) ?>" id="navbar-logo">
                 <?php endif ?>
             <?php else: ?>
-                <h1 class="h4 mt-2 fw-bold">Linkdom</h1>
+                <h1 class="h5 mt-2 fw-bold"><?php echo config('title') ?></h1>
             <?php endif ?>
             </a>
             <button class="navbar-toggler border-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
