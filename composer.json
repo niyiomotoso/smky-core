@@ -1,67 +1,32 @@
 {
-    "name": "omoniyi/smoky",
+    "name": "gempixel/framework",
     "type": "project",
-    "description": "The fastest URL shortener",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "description": "GemPixel Framework",
     "require": {
-        "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7",
-        "predis/predis": "^2.2"
-    },
-    "require-dev": {
-        "fakerphp/faker": "^1.9.1",
-        "knuckleswtf/scribe": "^4.29",
-        "laravel/pint": "^1.0",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
+        "abraham/twitteroauth": "^3.1",
+        "defuse/php-encryption": "^2.2",
+        "endroid/qr-code": "4.6.1",
+        "jaybizzle/crawler-detect": "^1.2",
+        "joelbutcher/facebook-graph-sdk": "^6.0",
+        "maxmind-db/reader": "^1.10",
+        "monolog/monolog": "^2.0",
+        "nikic/fast-route": "^1.3",
+        "nyholm/psr7": "^1.8",
+        "paypal/rest-api-sdk-php": "^1.14",
+        "php-http/message-factory": "^1.1",
+        "phpfastcache/phpfastcache": "^8.0",
+        "phpmailer/phpmailer": "^6.1",
+        "setasign/fpdf": "^1.8",
+        "sonata-project/google-authenticator": "^2.3",
+        "stripe/stripe-php": "^7.26",
+        "symfony/http-client": "^6.0"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "php-http/discovery": true
         }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    }
 }

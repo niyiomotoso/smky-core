@@ -1,17 +1,18 @@
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
+# Ignore Production
+config.php
 /vendor
-.env
-.env.backup
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
-/.fleet
-/.idea
+/storage/cache
+/storage/plugins
+.idea/
+# Ignore Files Types
+*.psd
+*.db
+*.log
+*.zip
+._*
+
+# Ignore Dev Environment
+/.dist
 /.vscode
+/public/content/*[.png,.jpg,.jpeg,.svg]
+workspace.code-workspace
