@@ -57,7 +57,7 @@
                         <div class="row text-muted">
                             <div class="col-sm-6 text-start">
                                 <p class="mb-0">
-                                    <?php echo date('Y') ?> &copy; <a href="<?php echo route('home') ?>" class="text-muted"><strong>Lunolink</strong></a>
+                                    <?php echo date('Y') ?> &copy; <a href="<?php echo route('home') ?>" class="text-muted"><strong>Linkdom</strong></a>
                                 </p>
                             </div>
                             <div class="col-sm-6 text-sm-end mt-2 mt-sm-0">

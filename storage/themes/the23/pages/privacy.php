@@ -54,7 +54,7 @@
 
                         <section>
                             <h3>Contact Us</h3>
-                            <p>If you have any questions or concerns about our Privacy Policy, please contact us at hello@lunolink.com.</p>
+                            <p>If you have any questions or concerns about our Privacy Policy, please contact us at hello@linkdom.co</p>
                         </section>
                     </div>
                 </div>

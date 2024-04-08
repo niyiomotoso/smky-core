@@ -49,7 +49,7 @@
 
                         <section>
                             <h3>9. Contact Us</h3>
-                            <p>If you have any questions or concerns about our Terms of Service, please contact us at hello@lunolink.com.</p>
+                            <p>If you have any questions or concerns about our Terms of Service, please contact us at hello@linkdom.co</p>
                         </section>
                     </div>
                 </div>
