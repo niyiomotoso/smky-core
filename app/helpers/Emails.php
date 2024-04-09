@@ -165,7 +165,9 @@ final class Emails {
      * @return void
      */
     public static function registered($user){
-        
+        // block this email for now
+        return;
+
         $mailer = self::setup();
 
         $activate = route('activate', [$user->uniquetoken]);
