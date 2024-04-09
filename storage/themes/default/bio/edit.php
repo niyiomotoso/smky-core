@@ -83,7 +83,7 @@
                         </div>
                         <div class="col-lg-9">
                             <div class="form-group">
-                                <label class="form-label"><?php ee('Bio Page Name') ?></label>
+                                <label class="form-label"><?php ee('Bio Page Name') ?> <i style="font-size: 12px"> (change this to your name)</i></label>
                                 <input type="text" class="form-control p-2" name="name" placeholder="e.g. For Instagram" value="<?php echo $bio->name ?>" data-required>
                             </div>
                             <div class="form-group mt-4">
