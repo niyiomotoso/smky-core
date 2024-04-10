@@ -971,7 +971,17 @@ class Bio {
             return Helper::redirect()->back()->with('danger', e('Profile does not exist.'));
         }
 
-        $profile->data = $defaultBio->data;
+        $profileId = $defaultBio->profile_id;
+        // override the data with the one in Profile
+        if (!empty($profileId)) {
+            $linkedProfile = DB::profiles()->where('id', $profileId)->first();
+            if (isset($linkedProfile) && isset($linkedProfile->data)) {
+                $profile->data = $linkedProfile->data;
+            }
+        } else {
+            $profile->data = $defaultBio->data;
+        }
+
         $profile->save();
 
         return Helper::redirect()->back()->with('success', e('New template applied.'));
