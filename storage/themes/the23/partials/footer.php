@@ -44,6 +44,7 @@
                         </li>
                     <?php endif ?>
                 </ul>
+                <div>27, College Road, CR0 1NJ, London, United Kingdom.</div>
             </div>
             <div class="col-lg-4 col-6 col-sm-6 ml-lg-auto mb-5 mb-lg-0">
                 <h6 class="fw-bold mb-3"><?php ee('Solutions') ?></h6>

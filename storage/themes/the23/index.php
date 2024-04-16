@@ -4,7 +4,7 @@
 		<?php echo message() ?>
 		<div class="row g-lg-5">
 			<div class="col-lg-7 text-center text-lg-start">
-				<h1 class="display-5 fw-bolder my-5"><strong><?php ee('World\'s leading Link Shortener, QR Code and Link-in-bio Generator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
+				<h1 class="display-5 fw-bolder my-5"><strong><?php ee('World\'s leading Link Shortener, QR Code and Link in Bio Creator') ?><br> <span class="gradient-primary clip-text" data-toggle="typed" data-list="<?php echo implode(',', [e('Shorten Links').'.',e('Generate QR Codes').'.', e('Generate Bio Pages').'.']) ?>"></span></strong></h1>
 <!--				<p class="col-lg-10 fs-5 mb-5">-->
 <!--					--><?php //echo config('themeconfig')->description ?? e('Boost your campaigns by creating dynamic Links, QR codes and Bio Pages and get instant analytics.') ?>
 <!--				</p>-->
@@ -16,13 +16,13 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" id="myTabs">
                         <li class="nav-item">
-                            <a class="nav-link active" id="tab1" data-toggle="tab" href="/"><b>Short Link</b></a>
+                            <a class="nav-link active" id="tab1" data-toggle="tab" href="/"><b>Shorten Link</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black" id="tab2" data-toggle="tab" href="/qr-codes">QR Code</a>
+                            <a class="nav-link text-black" id="tab2" data-toggle="tab" href="/qr-codes" style="font-size: 13px; font-weight: bold">Create QR Code</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black" id="tab3" data-toggle="tab" href="/bio-profiles">Link in Bio</a>
+                            <a class="nav-link text-black" id="tab3" data-toggle="tab" href="/bio-profiles" style="font-size: 13px; font-weight: bold">Link in Bio</a>
                         </li>
                     </ul>
                     <form method="post" action="<?php echo route('shorten') ?>" data-trigger="shorten-form" class="border-bottom custom-border mb-5 p-3 text-start">
