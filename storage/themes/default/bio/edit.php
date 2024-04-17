@@ -16,7 +16,7 @@
                         <a href="#defaultbios" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-layer-group me-2"></i> <span class="align-middle"><?php ee('Template Pages') ?></span></a>
                     </li>
                     <li class="nav-item mb-3 mb-md-0">
-                        <a href="#social" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-share me-2"></i>  <span class="align-middle"><?php ee('Social Links') ?></span></a>
+                        <a href="#social" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-share me-2"></i>  <span class="align-middle"><?php ee('Socials & Contacts') ?></span></a>
                     </li>
                     <li class="nav-item mb-3 mb-md-0">
                         <a href="#appearance" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-desktop me-2"></i>  <span class="align-middle"><?php ee('Appearance') ?></span></a>
@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="collapse switcher" id="social">
-                <h4 class="fw-bold mb-3"><?php ee('Social Links') ?></h4>
+                <h4 class="fw-bold mb-3"><?php ee('Socials & Contacts') ?></h4>
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <div class="row">

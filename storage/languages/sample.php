@@ -3716,7 +3716,7 @@ return [
 
         #: storage/themes/default/bio/edit.php:16
         #: storage/themes/default/bio/edit.php:88
-        "Social Links" => "",
+        "Socials & Contacts" => "",
 
         #: storage/themes/default/bio/edit.php:19
         #: storage/themes/default/integrations/wordpress.php:61
