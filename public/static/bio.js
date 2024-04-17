@@ -777,20 +777,41 @@ $(document).ready(function(){
 		e.preventDefault();
 		let platform = $(this).parents('.card').find('select[name=platform]').val();
 		let link = $(this).parents('.card').find('input[name=socialink]').val();
-		let regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+		let linkRegex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+        let phoneRegex = /^\+?(\d{1,3})?[ .-]?\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})$/;
+        let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let errorFound = false;
 
-		if(link.length < 5 || !regex.test(link)){
-			$.notify({
-			message: $(this).data('error')
-			},{
-				type: 'danger',
-				placement: {
-					from: "top",
-					align: "right"
-				},
-			});
-			return false;
-		}
+        if (platform === 'email') {
+          if(emailRegex.length < 5 || !emailRegex.test(link)){
+            errorFound = true;
+          } else {
+            link = 'mailto:'+link;
+          }
+        } else if (platform === 'phone') {
+          if(phoneRegex.length < 5 || !phoneRegex.test(link)){
+            errorFound = true;
+          } else {
+            link = 'tel:'+link;
+          }
+        } else {
+          if(linkRegex.length < 5 || !linkRegex.test(link)){
+            errorFound = true;
+          }
+        }
+
+        if (errorFound) {
+          $.notify({
+            message: $(this).data('error')
+          },{
+            type: 'danger',
+            placement: {
+              from: "top",
+              align: "right"
+            },
+          });
+          return false;
+        }
 
 		if(inplatforms.includes(platform)){
 			$.notify({

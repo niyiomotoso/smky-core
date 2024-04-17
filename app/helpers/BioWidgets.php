@@ -433,21 +433,73 @@ class BioWidgets {
     public static function socialPlatforms($key = null){
 
         $list = [
+            'amazon' => [
+                'name' => e('Amazon'),
+                'icon' => '<i class="fab fa-amazon"></i>',
+            ],
+            'behance' => [
+                'name' => e('Behance'),
+                'icon' => '<i class="fab fa-behance"></i>',
+            ],
+            'discord' => [
+                'name' => e('Discord'),
+                'icon' => '<i class="fab fa-discord"></i>',
+            ],
+            'dribbble' => [
+                'name' => e('Dribbble'),
+                'icon' => '<i class="fab fa-dribbble"></i>',
+            ],
+            'email' => [
+                'name' => e('Email'),
+                'icon' => '<i class="fa fa-envelope"></i>',
+            ],
             'facebook' => [
                 'name' => e('Facebook'),
                 'icon' => '<i class="fab fa-facebook"></i>',
             ],
-            'twitter' => [
-                'name' => e('Twitter'),
-                'icon' => '<i class="fab fa-twitter"></i>',
-            ],
-            'x' => [
-                'name' => e('X'),
-                'icon' => '<i class="fab fa-x-twitter"></i>',
+            'github' => [
+                'name' => e('Github'),
+                'icon' => '<i class="fab fa-github"></i>',
             ],
             'instagram' => [
                 'name' => e('Instagram'),
                 'icon' => '<i class="fab fa-instagram"></i>',
+            ],
+            'line' => [
+                'name' => e('Line Messenger'),
+                'icon' => '<i class="fab fa-line"></i>',
+            ],
+            'linkedin' => [
+                'name' => e('Linkedin'),
+                'icon' => '<i class="fab fa-linkedin"></i>',
+            ],
+            'medium' => [
+                'name' => e('Medium'),
+                'icon' => '<i class="fab fa-brands fa-medium"></i>',
+            ],
+            'pinterest' => [
+                'name' => e('Pinterest'),
+                'icon' => '<i class="fab fa-pinterest"></i>',
+            ],
+            'phone' => [
+                'name' => e('Phone Number'),
+                'icon' => '<i class="fa fa-phone"></i>',
+            ],
+            'shopify' => [
+                'name' => e('Shopify'),
+                'icon' => '<i class="fab fa-shopify"></i>',
+            ],
+            'snapchat' => [
+                'name' => e('Snapchat'),
+                'icon' => '<i class="fab fa-snapchat"></i>',
+            ],
+            'spotify' => [
+                'name' => e('Spotify'),
+                'icon' => '<i class="fab fa-spotify"></i>',
+            ],
+            'telegram' => [
+                'name' => e('Telegram'),
+                'icon' => '<i class="fab fa-telegram"></i>',
             ],
             'threads' => [
                 'name' => e('Threads'),
@@ -457,69 +509,29 @@ class BioWidgets {
                 'name' => e('TikTok'),
                 'icon' => '<i class="fab fa-tiktok"></i>',
             ],
-            'linkedin' => [
-                'name' => e('Linkedin'),
-                'icon' => '<i class="fab fa-linkedin"></i>',
-            ],
-            'youtube' => [
-                'name' => e('Youtube'),
-                'icon' => '<i class="fab fa-youtube"></i>',
-            ],
-            'telegram' => [
-                'name' => e('Telegram'),
-                'icon' => '<i class="fab fa-telegram"></i>',
-            ],
-            'snapchat' => [
-                'name' => e('Snapchat'),
-                'icon' => '<i class="fab fa-snapchat"></i>',
-            ],
-            'discord' => [
-                'name' => e('Discord'),
-                'icon' => '<i class="fab fa-discord"></i>',
-            ],
             'twitch' => [
                 'name' => e('Twitch'),
                 'icon' => '<i class="fab fa-twitch"></i>',
             ],
-            'pinterest' => [
-                'name' => e('Pinterest'),
-                'icon' => '<i class="fab fa-pinterest"></i>',
-            ],
-            'shopify' => [
-                'name' => e('Shopify'),
-                'icon' => '<i class="fab fa-shopify"></i>',
-            ],
-            'amazon' => [
-                'name' => e('Amazon'),
-                'icon' => '<i class="fab fa-amazon"></i>',
-            ],
-            'line' => [
-                'name' => e('Line Messenger'),
-                'icon' => '<i class="fab fa-line"></i>',
-            ],
-            'whatsapp' => [
-                'name' => e('Whatsapp'),
-                'icon' => '<i class="fab fa-whatsapp"></i>',
+            'twitter' => [
+                'name' => e('Twitter'),
+                'icon' => '<i class="fab fa-twitter"></i>',
             ],
             'viber' => [
                 'name' => e('Viber'),
                 'icon' => '<i class="fab fa-viber"></i>',
             ],
-            'spotify' => [
-                'name' => e('Spotify'),
-                'icon' => '<i class="fab fa-spotify"></i>',
+            'whatsapp' => [
+                'name' => e('Whatsapp'),
+                'icon' => '<i class="fab fa-whatsapp"></i>',
             ],
-            'github' => [
-                'name' => e('Github'),
-                'icon' => '<i class="fab fa-github"></i>',
+            'x' => [
+                'name' => e('X'),
+                'icon' => '<i class="fab fa-x-twitter"></i>',
             ],
-            'behance' => [
-                'name' => e('Behance'),
-                'icon' => '<i class="fab fa-behance"></i>',
-            ],
-            'dribbble' => [
-                'name' => e('Dribbble'),
-                'icon' => '<i class="fab fa-dribbble"></i>',
+            'youtube' => [
+                'name' => e('Youtube'),
+                'icon' => '<i class="fab fa-youtube"></i>',
             ],
         ];
 

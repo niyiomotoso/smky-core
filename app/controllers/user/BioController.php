@@ -380,7 +380,7 @@ class Bio {
                     </script>", "custom")->toFooter();
 
         View::push(assets('fonts/index.css'))->toHeader();
-
+        // minified version is generated from https://jscompress.com/
         View::push(assets('bio.min.js').'?v=2.2', 'script')->toFooter();
         View::push(route('bio.widgetjs'), 'script')->toFooter();
         

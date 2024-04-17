@@ -134,7 +134,7 @@
                                 <input type="text" class="form-control p-2 ignore" name="socialink" placeholder="https://">
                             </div>
                         </div>
-                        <button type="button" data-trigger="addsocial" class="btn btn-primary mt-3" data-error="<?php ee('Please enter a valid link') ?>" data-error-alt="<?php ee('You have already added a link to this platform') ?>"><?php ee('Add') ?></button>
+                        <button type="button" data-trigger="addsocial" class="btn btn-primary mt-3" data-error="<?php ee('Please enter a valid linkxxx') ?>" data-error-alt="<?php ee('You have already added a link to this platform') ?>"><?php ee('Add') ?></button>
                     </div>
                 </div>
                 <div class="card card-body shadow-sm" id="sociallinksholder">
@@ -150,8 +150,15 @@
                                     </div>                                    
                                 </div>
                                 <div class="input-group">
-                                    <div class="input-group-text bg-white"><i class="fab fa-<?php echo $name ?>"></i></div>
-                                    <input type="text" class="form-control p-2" name="social[<?php echo $name ?>]" value="<?php echo $sociallink ?>" placeholder="https://" data-error="<?php ee('Please enter a valid link') ?>">
+                                    <?php if($name === 'phone'): ?>
+                                        <div class="input-group-text bg-white"><i class="fa fa-phone"></i>
+                                        </div>
+                                    <?php elseif($name === 'email'): ?>
+                                        <div class="input-group-text bg-white"><i class="fa fa-envelope"></i></div>
+                                    <?php else:  ?>
+                                        <div class="input-group-text bg-white"><i class="fab fa-<?php echo $name ?>"></i></div>
+                                    <?php endif ?>
+                                    <input type="text" class="form-control p-2" name="social[<?php echo $name ?>]" value="<?php echo $sociallink ?>" placeholder="https://" data-error="<?php ee('Please enter a valid linkyyyyy') ?>">
                                 </div>
                             </div>
                         <?php endforeach ?>
