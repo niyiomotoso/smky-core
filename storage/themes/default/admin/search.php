@@ -14,6 +14,7 @@
                     <th><?php ee('Email') ?></th>
                     <th><?php ee('User Status') ?></th>
                     <th><?php ee('Registration Date') ?></th>
+                    <th><?php ee('Last Seen') ?></th>
                     <th><?php ee('Membership') ?></th>
                     <th><?php ee('Expiration') ?></th>
                     <th></th>
@@ -29,6 +30,7 @@
                         </td>
                         <td><?php echo ($user->active ? '<span class="badge bg-success">Active</span>':'<span class="badge bg-danger">Not Active</span>') ?> <?php echo $user->banned ? '<span class="badge bg-danger">'.e('Banned').'</span>':'' ?></td>                
                         <td><?php echo date("F d, Y",strtotime($user->date)) ?></td>
+                        <td><?php echo $user->lasttimeonline ?></td>
                         <td><?php echo ($user->pro ? '<span class="badge bg-success">Pro</span>':'<span class="badge bg-warning">Free</span>') ?></td>
                         <td><?php echo ($user->pro?date("F d, Y",strtotime($user->expiration)):"n/a") ?></td>                
                         <td class="d-none d-md-table-cell">

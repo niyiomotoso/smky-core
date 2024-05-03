@@ -16,6 +16,7 @@
  * @link https://gempixel.com  
  */
 
+use Core\Auth;
 use Core\View;
 use Core\File;
 use Core\Helper;
@@ -24,6 +25,7 @@ use Core\Response;
 use Core\Localization;
 use Core\DB;
 use Core\Plugin;
+use Helpers\General;
 
 class Home {
 
@@ -58,6 +60,10 @@ class Home {
         View::push(assets('frontend/libs/clipboard/dist/clipboard.min.js'), 'js')->toFooter();
 
         View::push(assets('frontend/libs/typedjs/typed.min.js'), 'script')->toFooter();
+
+        if (Auth::logged()) {
+            General::addOnlinePing();
+        }
 
         $themeconfig = config('theme_config');        
 

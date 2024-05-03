@@ -25,6 +25,7 @@ use Core\Helper;
 use Core\Request;
 use Core\Response;
 use Helpers\CDN;
+use Helpers\General;
 use Models\Url;
 
 class Dashboard {
@@ -85,6 +86,8 @@ class Dashboard {
         View::push(assets('frontend/libs/clipboard/dist/clipboard.min.js'), 'js')->toFooter();
         View::push(assets('Chart.min.js'), "script")->toFooter();
         View::push(assets('charts.min.js')."?v=1.0", 'script')->toFooter();
+        // update online status
+        General::addOnlinePing();
 
         return View::with('user.index', compact('urls', 'count', 'recentActivity'))->extend('layouts.dashboard');
     }

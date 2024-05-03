@@ -33,6 +33,7 @@
 					<th><?php ee('Email') ?></th>
 					<th><?php ee('User Status') ?></th>
 					<th><?php ee('Registration Date') ?></th>
+                    <th><?php ee('Last Seen') ?></th>
 					<th><?php ee('Membership') ?></th>
 					<th><?php ee('Expiration') ?></th>
 					<th><?php ee('URLs') ?></th>
@@ -55,6 +56,7 @@
 						</td>
 						<td><?php echo ($user->active ? '<span class="badge bg-success">'.e('Active').'</span>':'<span class="badge bg-danger">'.e('Not Active').'</span>') ?> <?php echo $user->banned ? '<span class="badge bg-danger">'.e('Banned').'</span>':'' ?></td>                
 						<td><?php echo date("F d, Y",strtotime($user->date)) ?></td>
+                        <td><?php echo $user->lasttimeonline ?></td>
 						<td><?php echo ($user->pro ? '<span class="badge bg-success">'.$user->pro.'</span>':'<span class="badge bg-warning">'.e('Free').'</span>') ?></td>
 						<td><?php echo ($user->pro ? date("F d, Y",strtotime($user->expiration)):"n/a") ?></td>                
 						<td><a href="<?php echo route('admin.users.view', [$user->id]) ?>" class="btn btn-success btn-sm"><?php echo $user->count ?></a></td>

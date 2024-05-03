@@ -18,6 +18,7 @@
 
 
 use Core\Request;
+use Core\Response;
 use Core\View;
 use Core\Helper;
 use Core\Auth;
@@ -68,6 +69,18 @@ class Users {
             $request->session('redirect', route('bio', $params));
             return Helper::redirect()->to(route('register'));
         }
+    }
+
+    public function updateLastTimeOnline(Request $request){
+        $userId = $request->get("userId");
+        $user = User::where("id", $userId)->first();
+
+        if ($user) {
+            $user->lasttimeonline = date('d-m-Y H:i:s');
+            $user->save();
+        }
+
+        return Response::factory(['error' => 0, 'data' => $userId])->json();
     }
 
     /**
