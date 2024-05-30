@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" class="form-control p-2 ignore" name="socialink" placeholder="https://">
+                                <input type="text" class="form-control p-2 ignore" name="socialink" placeholder="type here">
                             </div>
                         </div>
                         <button type="button" data-trigger="addsocial" class="btn btn-primary mt-3" data-error="<?php ee('Please enter a valid link') ?>" data-error-alt="<?php ee('You have already added a link to this platform') ?>"><?php ee('Add') ?></button>
