@@ -129,7 +129,7 @@
 				<div class="modal-body">
 					<div class="form-group mb-3">
 						<label for="name" class="form-label fw-bolder"><?php ee('Name') ?> <i data-bs-toggle="tooltip" title="<?php ee('A unique name will help you identify your bio page') ?>" class="ms-1 text-muted small fa fa-question-circle"></i></label>
-						<input type="text" class="form-control p-2" name="name" id="name" placeholder="e.g. Bio Page" data-min="3" data-error="<?php ee('Please enter a valid name (min 3 characters)') ?>" required>
+						<input type="text" class="form-control p-2" name="name" id="name" placeholder="e.g. Business name/Full name/Page name" data-min="3" data-error="<?php ee('Please enter a valid name (min 3 characters)') ?>" required>
 					</div>
 					<div class="row">
 						<?php if(count($domains) > 1): ?>

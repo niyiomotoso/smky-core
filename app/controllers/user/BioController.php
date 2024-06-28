@@ -253,7 +253,7 @@ class Bio {
             $url->save();
         }
 
-        return Response::factory(['error' => false, 'message' => e('Profile has been successfully created.'), 'token' => csrf_token(), 'html' => '<script>window.location="'.route('bio.edit', $profile->id).'"</script>'])->json();
+        return Response::factory(['error' => false, 'message' => e('Profile has been successfully created.'), 'token' => csrf_token(), 'html' => '<script>window.location="'.route('bio.edit', $profile->id).'?newBio=true"</script>'])->json();
     }
     /**
      * Delete Profile
@@ -660,6 +660,10 @@ class Bio {
                     $blockdata['id'] = $id;
                     if(isset($links[$id])) $blockdata['urlid'] = $links[$id];
                     $data['links'][$id] = BioWidgets::update($request, $profiledata, $blockdata);
+                    if (!str_contains($data['links'][$id]['text'], 'mail')) {
+                        $data['links'][$id]['link'] = \Core\Helper::reformatUrl($data['links'][$id]['link']);
+                    }
+
                 } catch(\Exception $e){
                     return Response::factory(['error' => true, 'message' => $e->getMessage(), 'token' => csrf_token()])->json();
                 }
@@ -674,6 +678,9 @@ class Bio {
             $data['social'] = [];
             foreach($request->social as $key => $value){
                 if(empty($value)) continue;
+                if ($key !== "email")
+                    $value = \Core\Helper::reformatUrl($value);
+
                 $data['social'][$key] = clean($value);
             }
         }        

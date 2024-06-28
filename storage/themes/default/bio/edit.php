@@ -1,3 +1,86 @@
+<style>
+    .category-btn {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    .input-error {
+        border-color: red;
+    }
+    .error-msg {
+        color: red;
+        font-size: 0.875em;
+    }
+    @media (min-width: 768px) {
+        .category-btn {
+            width: 48%;
+            margin-right: 4%;
+            margin-bottom: 10px;
+        }
+        .category-btn:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
+</style>
+<div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div id="bioForm">
+                <div id="step-1" class="step">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">Update Bio - Step 1</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div id="categoryButtons" class="row">
+                            <!-- Category buttons will be appended here dynamically -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+                <div id="step-2" class="step d-none">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">Update Bio - Almost there</h5>
+                    </div>
+                    <div class="modal-body" id="links1Inputs">
+                        <!-- Links1 input fields will be appended here dynamically -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="prevBtn2" onclick="prevStep()">Prev</button>
+                        <button type="button" class="btn btn-primary" id="nextBtn2" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+                <div id="step-3" class="step d-none">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">Update Bio - Last Step</h5>
+                    </div>
+                    <div class="modal-body" id="links2Inputs">
+                        <!-- Links2 input fields will be appended here dynamically -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="prevBtn3" onclick="prevStep()">Prev</button>
+                        <button type="button" class="btn btn-primary" id="nextBtn3" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+                <div id="step-4" class="step d-none">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">Your page almost ready!</h5>
+                    </div>
+                    <div class="modal-body"  style="padding: 33px">
+                        <p>If you would describe this page in one sentence, what would that be?</p>
+                        <input style="height: 50px" type="text" class="form-control p-2" name="tagline" id="tagline" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="prevBtn4" onclick="prevStep()">Prev</button>
+                        <button type="button" class="btn btn-success" id="submitButton">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <form action="<?php echo route('bio.update', [$bio->id]) ?>" method="post">
     <div class="d-flex mb-5">
         <h1 class="h4 mb-0 fw-bold"><?php ee('Customize') ?>  <?php echo $bio->name ?>  <?php echo (user()->defaultbio == $bio->id ? '<span class="badge bg-primary ms-2">'.e('Default').'</span>' : '') ?></h1>
@@ -12,9 +95,9 @@
                     <li class="nav-item mb-3 mb-md-0">
                         <a href="#links" class="nav-link text-muted active" data-trigger="switcher"><i class="fa fa-layer-group me-2"></i> <span class="align-middle"><?php ee('Content') ?></span></a>
                     </li>
-                    <li class="nav-item mb-3 mb-md-0">
-                        <a href="#defaultbios" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-layer-group me-2"></i> <span class="align-middle"><?php ee('Template Pages') ?></span></a>
-                    </li>
+<!--                    <li class="nav-item mb-3 mb-md-0">-->
+<!--                        <a href="#defaultbios" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-layer-group me-2"></i> <span class="align-middle">--><?php //ee('Template Pages') ?><!--</span></a>-->
+<!--                    </li>-->
                     <li class="nav-item mb-3 mb-md-0">
                         <a href="#social" class="nav-link text-muted" data-trigger="switcher"><i class="fa fa-share me-2"></i>  <span class="align-middle"><?php ee('Socials & Contacts') ?></span></a>
                     </li>
@@ -31,7 +114,10 @@
             </div>
             <div class="ms-auto">
                 <a href="<?php echo route('stats', [$bio->urlid]) ?>" class="btn btn-light border"><i class="text-black" data-feather="bar-chart"></i></a>
-                <button type="button" data-bs-toggle="modal" data-trigger="shortinfo" data-shorturl="<?php echo Helpers\App::shortRoute($url->domain, $bio->alias) ?>" class="btn btn-light border"><i class="text-black" data-feather="info"></i></button>
+                <button type="button" data-bs-toggle="modal" data-trigger="shortinfo" data-shorturl="<?php echo Helpers\App::shortRoute($url->domain, $bio->alias) ?>" class="btn btn-warning border">
+<!--                   <i class="text-black" data-feather="info"></i>-->
+                   Copy Link
+                </button>
                 <a href="<?php echo \Helpers\App::shortRoute($url->domain, $bio->alias) ?>" class="btn btn-success" target="_blank"><?php ee('View Bio') ?></a>
             </div>
         </div>
@@ -615,3 +701,354 @@
     </div>
   </div>
 </div>
+
+<!-- Modal logic -->
+<script src="<?php echo assets('frontend/libs/jquery/dist/jquery.min.js') ?>"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    var categories = {
+        "Influencer & Content Creator": {
+            "links1": ["Tiktok", "Instagram", "Youtube"],
+            "links2": ["Twitter", "Facebook", "Website"]
+        },
+        "Personal": {
+            "links1": ["Instagram", "Twitter", "Tiktok"],
+            "links2": ["Facebook", "Website"]
+        },
+        "Business": {
+            "links1": ["Facebook", "Instagram", "Twitter"],
+            "links2": ["Website1", "LinkedIn"]
+        },
+        "Musician": {
+            "links1": ["Twitter", "Linkedin", "Instagram"],
+            "links2": ["Spotify", "AppleMusic", "Website"]
+        },
+        "IT Professional": {
+            "links1": ["Twitter", "Linkedin", "Instagram"],
+            "links2": ["Blog", "Website"]
+        },
+        "Consultant": {
+            "links1": ["Twitter", "Linkedin", "Instagram"],
+            "links2": ["Blog", "Website"]
+        },
+        "Product Designer": {
+            "links1": ["Twitter", "Linkedin", "Facebook"],
+            "links2": ["Dribbble", "Behance", "Website"]
+        },
+        "Software Engineer": {
+            "links1": ["Twitter", "Linkedin", "Instagram"],
+            "links2": ["Github", "Website"]
+        },
+    };
+
+    var formData = {};
+    var currentStep = 1;
+    var totalSteps = 4;
+    var selectedCategory = '';
+
+    $(document).ready(function() {
+        generateCategoryButtons();
+        showStep(currentStep);
+
+        $('#submitButton').on('click', function(e) {
+            e.preventDefault();
+            console.log("formData", formData)
+            const payload = formulatePayload()
+            $.ajax({
+                url: '<?php echo route('bio.update', [$bio->id]) ?>',
+                method: 'POST',
+                data: payload,
+                success: function(response) {
+                    const {error, message} = response
+                    if (error)
+                        alert(message);
+                    else
+                        window.location = window.location.href.split('?')[0];
+                },
+                error: function(response) {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    });
+
+    function generateCategoryButtons() {
+        var categoryButtons = $('#categoryButtons');
+        $.each(categories, function(category) {
+            categoryButtons.append('<div class="col-md-6 mb-3"><button type="button" class="btn btn-outline-primary w-100 category-btn" onclick="selectCategory(\'' + category + '\')">' + category + '</button></div>');
+        });
+    }
+
+    function selectCategory(category) {
+        selectedCategory = category;
+        formData['category'] = category;
+
+        // Generate inputs for links1
+        var links1Inputs = $('#links1Inputs');
+        links1Inputs.empty();
+        $.each(categories[category]['links1'], function(index, link) {
+            var storedValue = localStorage.getItem('url_' + category + '_' + link) || '';
+            links1Inputs.append('<div class="form-group mb-3"><label for="link1-' + link + '" class="form-label fw-bolder">' + link + '</label><input type="text" class="form-control p-2" name="link1-' + link + '" id="link1-' + link + '" value="' + storedValue + '" placeholder="Enter your ' + link + ' link"><div class="error-msg" id="error-link1-' + link + '"></div></div>');
+        });
+
+        // Generate inputs for links2
+        var links2Inputs = $('#links2Inputs');
+        links2Inputs.empty();
+        $.each(categories[category]['links2'], function(index, link) {
+            var storedValue = localStorage.getItem('url_' + category + '_' + link) || '';
+            links2Inputs.append('<div class="form-group mb-3"><label for="link2-' + link + '" class="form-label fw-bolder">' + link + '</label><input type="text" class="form-control p-2" name="link2-' + link + '" id="link2-' + link + '" value="' + storedValue + '" placeholder="Enter your ' + link + ' link"><div class="error-msg" id="error-link2-' + link + '"></div></div>');
+        });
+
+        showStep(2);
+    }
+
+    function showStep(step) {
+        $('.step').addClass('d-none');
+        $('#step-' + step).removeClass('d-none');
+    }
+
+    function nextStep() {
+        if (validateStep(currentStep)) {
+            saveInputsToLocalStorage(currentStep);
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    }
+
+    function validateStep(step) {
+        var isValid = true;
+        if (step === 2 || step === 3) {
+            var linksInputs = step === 2 ? '#links1Inputs' : '#links2Inputs';
+            $(linksInputs + ' input').each(function() {
+                var url = $(this).val();
+                var link = $(this).attr('id').split('-')[1];
+                if (!isValidUrl(url)) {
+                    isValid = false;
+                    $(this).addClass('input-error');
+                    $('#error-' + $(this).attr('id')).text('Please enter a valid URL.');
+                } else {
+                    $(this).removeClass('input-error');
+                    $('#error-' + $(this).attr('id')).text('');
+                    formData[$(this).attr('name')] = url;
+                }
+            });
+        }
+        return isValid;
+    }
+
+    function saveInputsToLocalStorage(step) {
+        var linksInputs = step === 2 ? '#links1Inputs' : '#links2Inputs';
+        $(linksInputs + ' input').each(function() {
+            var url = $(this).val();
+            var category = formData['category'];
+            var linkName = $(this).attr('id').split('-')[1];
+            localStorage.setItem('url_' + category + '_' + linkName, url);
+        });
+    }
+
+    function isValidUrl(url) {
+        return true;
+        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+            '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return !!pattern.test(url);
+    }
+
+    function formulatePayload() {
+        let payload = {};
+        payload._token = '<?php echo csrf_token() ?>'
+       // payload.avatar = ""
+        payload.domain = "https://linkdom.me"
+        payload.name = '<?php echo $bio->name ?>'
+
+        payload.socialposition = "top"
+        payload.layout = "layout1"
+        payload.mode = "singlecolor"
+        payload.bg = "#dadfc3"
+
+        payload.gradient = {}
+        payload.gradient.start = ""
+        payload.gradient.stop = ""
+        payload.gradientangle = 135
+
+        // data.bgimage = ""
+        payload.buttoncolor = "#050000"
+        payload.buttontextcolor = "#ffffff"
+        payload.buttonstyle = "rounded"
+        payload.shadow = "none"
+        payload.shadowcolor = "#000"
+        payload.title = '<?php echo $bio->name ?> on Linkdom'
+        payload.description = formData['tagline']
+
+        payload.avatarenabled = 0
+        payload.avatarenabled = 1
+        payload.avatarstyle = "rounded"
+        payload.sensitive = 0
+        payload.cookie = 0
+        payload.share = 0
+        payload.share = 1
+        payload.branding = 0
+
+        const TIKTOK = "tiktok"
+        const FACEBOOK = "facebook"
+        const TWITTER = "twitter"
+        const INSTAGRAM = "instagram"
+        const YOUTUBE = "youtube"
+        const SPOTIFY = "spotify"
+        const LINKEDIN = "linkedin"
+        const DRIBBBLE = "dribbble"
+        const BEHANCE = "behance"
+        const GITHUB = "github"
+        const EMAIL = "email"
+        const APPLEMUSIC = "applemusic"
+
+        let data = {}
+        let social = {}
+
+        // tagline
+        data.tagline = {}
+        data.tagline.active = 0
+        data.tagline.active = 1
+        data.tagline.type = 'tagline'
+        data.tagline.text = formData['tagline'] ?  formData['tagline'] : ''
+
+        for (const [key, value] of Object.entries(formData)) {
+            if (!key.includes("link") || value === undefined || value === null || value === "")
+                continue
+
+            const keySplit = key.split("-")
+            let link = keySplit[1]
+            const linkKey = keyGen(10)
+            data[linkKey] = {}
+            data[linkKey].opennew = 0
+            data[linkKey].opennew = 1
+            data[linkKey].animation = "scale"
+            data[linkKey].sensitive = 0
+            data[linkKey].subscribe = 0
+            data[linkKey].active = 0
+            data[linkKey].active = 1
+            data[linkKey].type = "link"
+            data[linkKey].link = value
+
+            link = link.toLowerCase()
+            switch (link) {
+                case TIKTOK:
+                    data[linkKey].icon = "fab fa-tiktok"
+                    data[linkKey].text = "My Tiktok Page"
+                    social.tiktok = value
+                    break
+                case YOUTUBE:
+                    data[linkKey].icon = "fab fa-youtube"
+                    data[linkKey].text = "Videos on Youtube"
+                    social.youtube = value
+                    break
+                case TWITTER:
+                    data[linkKey].icon = "fab fa-twitter"
+                    data[linkKey].text = "View my Tweets"
+                    social.twitter = value
+                    break
+                case LINKEDIN:
+                    data[linkKey].icon = "fab fa-linkedin"
+                    data[linkKey].text = "My LinkedIn Profile"
+                    social.linkedin = value
+                    break
+                case GITHUB:
+                    data[linkKey].icon = "fab fa-github"
+                    data[linkKey].text = "My Code on Github"
+                    social.github = value
+                    break
+                case FACEBOOK:
+                    data[linkKey].icon = "fab fa-facebook"
+                    data[linkKey].text = "On Facebook"
+                    social.facebook = value
+                    break
+                case INSTAGRAM:
+                    data[linkKey].icon = "fab fa-instagram"
+                    data[linkKey].text = "On Instagram"
+                    social.instagram = value
+                    break
+                case APPLEMUSIC:
+                    data[linkKey].icon = "fab fa-apple"
+                    data[linkKey].text = "Listen On Apple Music"
+                    break
+                case SPOTIFY:
+                    data[linkKey].icon = "fab fa-spotify"
+                    data[linkKey].text = "Listen on Spotify"
+                    break
+                case DRIBBBLE:
+                    data[linkKey].icon = "fas fa-globe"
+                    data[linkKey].text = "My Designs on Dribbble"
+                    break
+                case BEHANCE:
+                    data[linkKey].icon = "fab fa-spotify"
+                    data[linkKey].text = "Listen on Spotify"
+                    break
+                default:
+                    data[linkKey].icon = "fas fa-globe"
+                    data[linkKey].text = "Visit my Website"
+            }
+        }
+
+        // email link
+        const userEmail = '<?php echo \Core\Auth::logged() ? \Core\Auth::user()->email : '' ?>'
+        social.email = 'mailto:' + userEmail
+        const emailLinkKey = keyGen(10)
+        data[emailLinkKey] = {}
+        data[emailLinkKey].icon = "fa fa-envelope"
+        data[emailLinkKey].text = "Email me"
+        data[emailLinkKey].opennew = 0
+        data[emailLinkKey].opennew = 1
+        data[emailLinkKey].animation = "scale"
+        data[emailLinkKey].sensitive = 0
+        data[emailLinkKey].subscribe = 0
+        data[emailLinkKey].active = 0
+        data[emailLinkKey].active = 1
+        data[emailLinkKey].type = "link"
+        data[emailLinkKey].link = 'mailto:' + userEmail
+
+        payload.socialposition = "top"
+        payload.social = social
+        payload.data = data
+        console.log("payload", payload)
+        return payload
+    }
+
+    function keyGen(keyLength) {
+        let i, key = "", characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const charactersLength = characters.length;
+        for (i = 0; i < keyLength; i++) {
+            key += characters.substr(Math.floor((Math.random() * charactersLength) + 1), 1);
+        }
+        return key;
+    }
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to check URL query parameter
+        function checkURLParameter() {
+            const urlParams = new URLSearchParams(window.location.search);
+            // Check if the query parameter 'open' exists and its value is 'true'
+            if (urlParams.has('newBio') && urlParams.get('newBio') === 'true') {
+                // Open the modal
+                const myModal = new bootstrap.Modal(document.getElementById('editModal'));
+                myModal.show();
+            }
+        }
+        // Call the function when the DOM is fully loaded
+        checkURLParameter();
+    });
+</script>

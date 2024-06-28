@@ -795,9 +795,10 @@ $(document).ready(function(){
             link = 'tel:'+link;
           }
         } else {
-          if(linkRegex.length < 5 || !linkRegex.test(link)){
-            errorFound = true;
-          }
+          // commenting out link regex for now since we now have link formating in php backend
+          // if(linkRegex.length < 5 || !linkRegex.test(link)){
+          //   errorFound = true;
+          // }
         }
 
         if (errorFound) {

@@ -122,6 +122,25 @@ final class Helper {
 
       return $result;
     }
+
+    public static function reformatUrl($url) {
+        // Check if the URL starts with "www."
+        if (strpos($url, 'www.') === 0) {
+            // Prepend "http://"
+            $url = 'http://' . $url;
+        }
+        // Check if the URL starts with "http://" or "https://"
+        elseif (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0) {
+            // Do nothing
+        }
+        // If the URL does not start with any of the above
+        else {
+            // Prepend "http://"
+            $url = 'http://' . $url;
+        }
+
+        return $url;
+    }
   /**
    * Redirect Back
    * @author GemPixel <https://gempixel.com>
