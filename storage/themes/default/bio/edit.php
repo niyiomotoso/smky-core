@@ -709,37 +709,91 @@
     var categories = {
         "Influencer & Content Creator": {
             "links1": ["Tiktok", "Instagram", "Youtube"],
-            "links2": ["Twitter", "Facebook", "Website"]
+            "links2": ["Twitter", "Facebook", "Website1"]
         },
         "Personal": {
             "links1": ["Instagram", "Twitter", "Tiktok"],
-            "links2": ["Facebook", "Website"]
+            "links2": ["Facebook", "Website1"]
         },
         "Business": {
             "links1": ["Facebook", "Instagram", "Twitter"],
             "links2": ["Website1", "LinkedIn"]
         },
         "Musician": {
-            "links1": ["Twitter", "Linkedin", "Instagram"],
-            "links2": ["Spotify", "AppleMusic", "Website"]
+            "links1": ["Youtube", "Instagram", "Tiktok"],
+            "links2": ["Spotify", "AppleMusic", "Website1"]
         },
         "IT Professional": {
             "links1": ["Twitter", "Linkedin", "Instagram"],
-            "links2": ["Blog", "Website"]
+            "links2": ["Blog", "Website1"]
         },
         "Consultant": {
             "links1": ["Twitter", "Linkedin", "Instagram"],
-            "links2": ["Blog", "Website"]
+            "links2": ["Blog", "Website1"]
         },
         "Product Designer": {
             "links1": ["Twitter", "Linkedin", "Facebook"],
-            "links2": ["Dribbble", "Behance", "Website"]
+            "links2": ["Dribbble", "Behance", "Website1"]
         },
         "Software Engineer": {
             "links1": ["Twitter", "Linkedin", "Instagram"],
-            "links2": ["Github", "Website"]
+            "links2": ["Github", "Website1"]
         },
     };
+
+    let platformDictionary = {
+        Twitter: {
+            name: "Enter your Twitter link (if any)",
+            placeholder: "e.g https://twitter.com/username",
+        },
+        Instagram: {
+            name: "Enter your Instagram link (if any)",
+            placeholder: "e.g https://instagram.com/username",
+        },
+        Facebook: {
+            name: "Enter your Facebook link (if any)",
+            placeholder: "e.g https://facebook.com/username",
+        },
+        Github: {
+            name: "Enter your Github link (if any)",
+            placeholder: "e.g https://github.com/username",
+        },
+        Linkedin: {
+            name: "Enter your Linkedin link (if any)",
+            placeholder: "e.g https://linkedin.com/username",
+        },
+        Dribbble: {
+            name: "Enter your Dribbble link (if any)",
+            placeholder: "e.g https://dribbble.com/username",
+        },
+        Behance: {
+            name: "Enter your Behance link (if any)",
+            placeholder: "e.g https://behance.com/username",
+        },
+        AppleMusic: {
+            name: "Enter your Apple Music link (if any)",
+            placeholder: "e.g https://apple.com",
+        },
+        Spotify: {
+            name: "Enter your Spotify link (if any)",
+            placeholder: "e.g https://spotify.com",
+        },
+        Blog: {
+            name: "Enter your Blog link (if any)",
+            placeholder: "e.g https://blog.com",
+        },
+    }
+
+    function getPlatformDictionary(platform) {
+        if (platformDictionary.hasOwnProperty(platform)) {
+            return platformDictionary[platform]
+        } else {
+            return {
+                name: "Enter your webpage link (if any)",
+                placeholder: "e.g https://www.google.com",
+            }
+        }
+    }
 
     let pageStyles = [
         {"mode": "gradient", "bg": "", "bgimage": "", "buttontextcolor": "#1a1c1d", "buttoncolor": "#ffffff", "textcolor": "#ffffff", "buttonstyle": "rectangular", "gradient": {"start": "#6a6b66", "stop": "#bcbcc4", "angle": 72}, "fonts": "Arial"},
@@ -800,7 +854,7 @@
         links1Inputs.empty();
         $.each(categories[category]['links1'], function(index, link) {
             var storedValue = localStorage.getItem('url_' + category + '_' + link) || '';
-            links1Inputs.append('<div class="form-group mb-3"><label for="link1-' + link + '" class="form-label fw-bolder">' + link + '</label><input type="text" class="form-control p-2" name="link1-' + link + '" id="link1-' + link + '" value="' + storedValue + '" placeholder="Enter your ' + link + ' link"><div class="error-msg" id="error-link1-' + link + '"></div></div>');
+            links1Inputs.append('<div class="form-group mb-3"><label for="link1-' + link + '" class="form-label fw-bolder">' + getPlatformDictionary(link).name + '</label><input type="text" class="form-control p-2" name="link1-' + link + '" id="link1-' + link + '" value="' + storedValue + '" placeholder="' + getPlatformDictionary(link).placeholder + '"><div class="error-msg" id="error-link1-' + link + '"></div></div>');
         });
 
         // Generate inputs for links2
@@ -808,7 +862,7 @@
         links2Inputs.empty();
         $.each(categories[category]['links2'], function(index, link) {
             var storedValue = localStorage.getItem('url_' + category + '_' + link) || '';
-            links2Inputs.append('<div class="form-group mb-3"><label for="link2-' + link + '" class="form-label fw-bolder">' + link + '</label><input type="text" class="form-control p-2" name="link2-' + link + '" id="link2-' + link + '" value="' + storedValue + '" placeholder="Enter your ' + link + ' link"><div class="error-msg" id="error-link2-' + link + '"></div></div>');
+            links2Inputs.append('<div class="form-group mb-3"><label for="link2-' + link + '" class="form-label fw-bolder">' + getPlatformDictionary(link).name + '</label><input type="text" class="form-control p-2" name="link2-' + link + '" id="link2-' + link + '" value="' + storedValue + '" placeholder="' + getPlatformDictionary(link).placeholder + '"><div class="error-msg" id="error-link2-' + link + '"></div></div>');
         });
 
         showStep(2);
