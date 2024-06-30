@@ -69,7 +69,7 @@
                     </div>
                     <div class="modal-body"  style="padding: 33px">
                         <p>If you would describe this page in one sentence, what would that be?</p>
-                        <input style="height: 50px" type="text" class="form-control p-2" name="tagline" id="tagline" />
+                        <input style="height: 60px" type="text" class="form-control p-2" placeholder="e.g Content Creator | Entrepreneur| Designer | Consultancy." name="tagline" id="tagline" />
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" id="prevBtn4" onclick="prevStep()">Prev</button>
@@ -741,18 +741,25 @@
         },
     };
 
-    var formData = {};
-    var currentStep = 1;
-    var totalSteps = 4;
-    var selectedCategory = '';
+    let pageStyles = [
+        {"mode": "gradient", "bg": "", "bgimage": "", "buttontextcolor": "#1a1c1d", "buttoncolor": "#ffffff", "textcolor": "#ffffff", "buttonstyle": "rectangular", "gradient": {"start": "#6a6b66", "stop": "#bcbcc4", "angle": 72}, "fonts": "Arial"},
+        {"mode": "singlecolor", "bg": "#143642", "bgimage": "","buttontextcolor": "#ffffff", "buttoncolor": "#ec9a29", "textcolor": "#ffffff", "buttonstyle": "trec", "gradient": {"start": "", "stop": "", "angle": 107}},
+        {"mode": "gradient", "bg": "", "bgimage": "", "buttontextcolor": "#232526", "buttoncolor": "#ffffff", "textcolor": "#ffffff", "buttonstyle": "rounded", "gradient": {"start": "#d262f6", "stop": "#5ea7f6", "angle": 107}, "fonts": "Arial"},
+        {"mode": "singlecolor", "bg": "#f5f5fd", "bgimage": "", "buttontextcolor": "#f5f5fd", "buttoncolor": "#16110d", "textcolor": "#010101", "buttonstyle": "rectangular", "gradient": {"start": "", "stop": "", "angle": 107}, "fonts": "Montserrat"},
+        {"mode": "gradient", "bg": "", "bgimage": "", "buttontextcolor": "#fffcfd", "buttoncolor": "#110e0e", "textcolor": "#ffffff", "buttonstyle": "rounded", "gradient": {"start": "#9748ea", "stop": "#681cee", "angle": 360}},
+    ]
+    let formData = {};
+    let currentStep = 1;
+    let totalSteps = 4;
+    let selectedCategory = '';
 
     $(document).ready(function() {
         generateCategoryButtons();
         showStep(currentStep);
 
         $('#submitButton').on('click', function(e) {
+            validateStep(currentStep)
             e.preventDefault();
-            console.log("formData", formData)
             const payload = formulatePayload()
             $.ajax({
                 url: '<?php echo route('bio.update', [$bio->id]) ?>',
@@ -777,6 +784,11 @@
         $.each(categories, function(category) {
             categoryButtons.append('<div class="col-md-6 mb-3"><button type="button" class="btn btn-outline-primary w-100 category-btn" onclick="selectCategory(\'' + category + '\')">' + category + '</button></div>');
         });
+    }
+
+    // Function to pick a random index
+    function getRandomIndexForArr(array) {
+        return Math.floor(Math.random() * array.length);
     }
 
     function selectCategory(category) {
@@ -843,6 +855,11 @@
                 }
             });
         }
+
+        if (step === 4) {
+            formData['tagline'] = $('#tagline').val();
+        }
+
         return isValid;
     }
 
@@ -876,18 +893,7 @@
 
         payload.socialposition = "top"
         payload.layout = "layout1"
-        payload.mode = "singlecolor"
-        payload.bg = "#dadfc3"
 
-        payload.gradient = {}
-        payload.gradient.start = ""
-        payload.gradient.stop = ""
-        payload.gradientangle = 135
-
-        // data.bgimage = ""
-        payload.buttoncolor = "#050000"
-        payload.buttontextcolor = "#ffffff"
-        payload.buttonstyle = "rounded"
         payload.shadow = "none"
         payload.shadowcolor = "#000"
         payload.title = '<?php echo $bio->name ?> on Linkdom'
@@ -898,7 +904,6 @@
         payload.avatarstyle = "rounded"
         payload.sensitive = 0
         payload.cookie = 0
-        payload.share = 0
         payload.share = 1
         payload.branding = 0
 
@@ -920,7 +925,6 @@
 
         // tagline
         data.tagline = {}
-        data.tagline.active = 0
         data.tagline.active = 1
         data.tagline.type = 'tagline'
         data.tagline.text = formData['tagline'] ?  formData['tagline'] : ''
@@ -972,12 +976,12 @@
                     break
                 case FACEBOOK:
                     data[linkKey].icon = "fab fa-facebook"
-                    data[linkKey].text = "On Facebook"
+                    data[linkKey].text = "Facebook Posts"
                     social.facebook = value
                     break
                 case INSTAGRAM:
                     data[linkKey].icon = "fab fa-instagram"
-                    data[linkKey].text = "On Instagram"
+                    data[linkKey].text = "Instagram Posts"
                     social.instagram = value
                     break
                 case APPLEMUSIC:
@@ -1022,7 +1026,17 @@
         payload.socialposition = "top"
         payload.social = social
         payload.data = data
-        console.log("payload", payload)
+
+        function addPageStyleToPayload(payload) {
+            const pickedStyle = pageStyles[getRandomIndexForArr(pageStyles)]
+            for (const pickedStyleKey in pickedStyle) {
+                payload[pickedStyleKey] = pickedStyle[pickedStyleKey]
+            }
+
+            return payload
+        }
+
+        payload = addPageStyleToPayload(payload)
         return payload
     }
 
