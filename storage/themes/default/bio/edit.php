@@ -28,9 +28,13 @@
             <div id="bioForm">
                 <div id="step-1" class="step">
                     <div class="modal-header">
-                        <h5 class="modal-title fw-bold">Update Bio - Step 1</h5>
+                        <h5 class="modal-title fw-bold">Populate Bio - Step 1</h5>
                     </div>
                     <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <b>What category would fit your page the most? </b>
+                        </div>
+                        <br/>
                         <div id="categoryButtons" class="row">
                             <!-- Category buttons will be appended here dynamically -->
                         </div>
@@ -41,7 +45,7 @@
                 </div>
                 <div id="step-2" class="step d-none">
                     <div class="modal-header">
-                        <h5 class="modal-title fw-bold">Update Bio - Almost there</h5>
+                        <h5 class="modal-title fw-bold">Populate Bio - Almost there</h5>
                     </div>
                     <div class="modal-body" id="links1Inputs">
                         <!-- Links1 input fields will be appended here dynamically -->
@@ -53,7 +57,7 @@
                 </div>
                 <div id="step-3" class="step d-none">
                     <div class="modal-header">
-                        <h5 class="modal-title fw-bold">Update Bio - Last Step</h5>
+                        <h5 class="modal-title fw-bold">Populate Bio - Last Step</h5>
                     </div>
                     <div class="modal-body" id="links2Inputs">
                         <!-- Links2 input fields will be appended here dynamically -->
@@ -707,21 +711,29 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 <script>
     var categories = {
-        "Influencer & Content Creator": {
-            "links1": ["Tiktok", "Instagram", "Youtube"],
-            "links2": ["Twitter", "Facebook", "Website1"]
-        },
         "Personal": {
             "links1": ["Instagram", "Twitter", "Tiktok"],
             "links2": ["Facebook", "Website1"]
         },
+        "Influencer & Content Creator": {
+            "links1": ["Tiktok", "Instagram", "Youtube"],
+            "links2": ["Twitter", "Facebook", "Website1"]
+        },
         "Business": {
+            "links1": ["Facebook", "Instagram", "Twitter"],
+            "links2": ["Website1", "LinkedIn"]
+        },
+        "Agency": {
             "links1": ["Facebook", "Instagram", "Twitter"],
             "links2": ["Website1", "LinkedIn"]
         },
         "Musician": {
             "links1": ["Youtube", "Instagram", "Tiktok"],
             "links2": ["Spotify", "AppleMusic", "Website1"]
+        },
+        "Actor": {
+            "links1": ["Instagram", "Facebook", "Youtube"],
+            "links2": ["Tiktok", "Website1"]
         },
         "IT Professional": {
             "links1": ["Twitter", "Linkedin", "Instagram"],
@@ -773,6 +785,10 @@
         AppleMusic: {
             name: "Enter your Apple Music link (if any)",
             placeholder: "e.g https://apple.com",
+        },
+        Youtube: {
+            name: "Enter your Youtube channel link (if any)",
+            placeholder: "e.g https://youtube.com",
         },
         Spotify: {
             name: "Enter your Spotify link (if any)",
