@@ -1051,8 +1051,8 @@
                     data[linkKey].text = "My Designs on Dribbble"
                     break
                 case BEHANCE:
-                    data[linkKey].icon = "fab fa-spotify"
-                    data[linkKey].text = "Listen on Spotify"
+                    data[linkKey].icon = "fab fa-behance"
+                    data[linkKey].text = "My Designs on Behance"
                     break
                 default:
                     data[linkKey].icon = "fas fa-globe"
