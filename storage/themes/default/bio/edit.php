@@ -710,94 +710,123 @@
 <script src="<?php echo assets('frontend/libs/jquery/dist/jquery.min.js') ?>"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 <script>
+    const TIKTOK = "tiktok"
+    const FACEBOOK = "facebook"
+    const TWITTER = "twitter"
+    const INSTAGRAM = "instagram"
+    const YOUTUBE = "youtube"
+    const SPOTIFY = "spotify"
+    const LINKEDIN = "linkedin"
+    const DRIBBBLE = "dribbble"
+    const BEHANCE = "behance"
+    const GITHUB = "github"
+    const EMAIL = "email"
+    const APPLEMUSIC = "applemusic"
+    const BUSINESSPAGE1 = "businesspage1"
+    const BUSINESSPAGE2 = "businesspage2"
+    const DEFAULTWEBSITE = "defaultweb"
+    const BLOG = "blog"
+
     var categories = {
         "Personal": {
-            "links1": ["Instagram", "Twitter", "Tiktok"],
-            "links2": ["Facebook", "Website1"]
+            "links1": [INSTAGRAM, TWITTER, TIKTOK],
+            "links2": [FACEBOOK, DEFAULTWEBSITE]
         },
         "Influencer & Content Creator": {
-            "links1": ["Tiktok", "Instagram", "Youtube"],
-            "links2": ["Twitter", "Facebook", "Website1"]
+            "links1": [TIKTOK, INSTAGRAM, YOUTUBE],
+            "links2": [TWITTER, FACEBOOK, DEFAULTWEBSITE]
         },
         "Business": {
-            "links1": ["Facebook", "Instagram", "Twitter"],
-            "links2": ["Website1", "LinkedIn"]
+            "links1": [FACEBOOK, INSTAGRAM, TWITTER],
+            "links2": [BUSINESSPAGE1, BUSINESSPAGE2]
         },
         "Agency": {
-            "links1": ["Facebook", "Instagram", "Twitter"],
-            "links2": ["Website1", "LinkedIn"]
+            "links1": [FACEBOOK, INSTAGRAM, TWITTER],
+            "links2": [DEFAULTWEBSITE, LINKEDIN]
         },
         "Musician": {
-            "links1": ["Youtube", "Instagram", "Tiktok"],
-            "links2": ["Spotify", "AppleMusic", "Website1"]
+            "links1": [YOUTUBE, INSTAGRAM, TIKTOK],
+            "links2": [SPOTIFY, APPLEMUSIC, DEFAULTWEBSITE]
         },
         "Actor": {
-            "links1": ["Instagram", "Facebook", "Youtube"],
-            "links2": ["Tiktok", "Website1"]
+            "links1": [INSTAGRAM, FACEBOOK, YOUTUBE],
+            "links2": [TIKTOK, DEFAULTWEBSITE]
         },
         "IT Professional": {
-            "links1": ["Twitter", "Linkedin", "Instagram"],
-            "links2": ["Blog", "Website1"]
+            "links1": [TWITTER, LINKEDIN, INSTAGRAM],
+            "links2": [BLOG, DEFAULTWEBSITE]
         },
         "Consultant": {
-            "links1": ["Twitter", "Linkedin", "Instagram"],
-            "links2": ["Blog", "Website1"]
+            "links1": [TWITTER, LINKEDIN, INSTAGRAM],
+            "links2": [BLOG, DEFAULTWEBSITE]
         },
         "Product Designer": {
-            "links1": ["Twitter", "Linkedin", "Facebook"],
-            "links2": ["Dribbble", "Behance", "Website1"]
+            "links1": [TWITTER, LINKEDIN, FACEBOOK],
+            "links2": [DRIBBBLE, BEHANCE, DEFAULTWEBSITE]
         },
         "Software Engineer": {
-            "links1": ["Twitter", "Linkedin", "Instagram"],
-            "links2": ["Github", "Website1"]
+            "links1": [TWITTER, LINKEDIN, INSTAGRAM],
+            "links2": [GITHUB, DEFAULTWEBSITE]
         },
     };
 
     let platformDictionary = {
-        Twitter: {
+        [TIKTOK]: {
+            name: "Enter your Tiktok link (if any)",
+            placeholder: "e.g https://tiktok.com/username",
+        },
+        [TWITTER]: {
             name: "Enter your Twitter link (if any)",
             placeholder: "e.g https://twitter.com/username",
         },
-        Instagram: {
+        [INSTAGRAM]: {
             name: "Enter your Instagram link (if any)",
             placeholder: "e.g https://instagram.com/username",
         },
-        Facebook: {
+        [FACEBOOK]: {
             name: "Enter your Facebook link (if any)",
             placeholder: "e.g https://facebook.com/username",
         },
-        Github: {
+        [GITHUB]: {
             name: "Enter your Github link (if any)",
             placeholder: "e.g https://github.com/username",
         },
-        Linkedin: {
+        [LINKEDIN]: {
             name: "Enter your Linkedin link (if any)",
             placeholder: "e.g https://linkedin.com/username",
         },
-        Dribbble: {
+        [DRIBBBLE]: {
             name: "Enter your Dribbble link (if any)",
             placeholder: "e.g https://dribbble.com/username",
         },
-        Behance: {
+        [BEHANCE]: {
             name: "Enter your Behance link (if any)",
             placeholder: "e.g https://behance.com/username",
         },
-        AppleMusic: {
+        [APPLEMUSIC]: {
             name: "Enter your Apple Music link (if any)",
             placeholder: "e.g https://apple.com",
         },
-        Youtube: {
+        [YOUTUBE]: {
             name: "Enter your Youtube channel link (if any)",
             placeholder: "e.g https://youtube.com",
         },
-        Spotify: {
+        [SPOTIFY]: {
             name: "Enter your Spotify link (if any)",
             placeholder: "e.g https://spotify.com",
         },
-        Blog: {
+        [BLOG]: {
             name: "Enter your Blog link (if any)",
             placeholder: "e.g https://blog.com",
         },
+        [BUSINESSPAGE1]: {
+            name: "Enter your Business website (if any)",
+            placeholder: "e.g https://page.com",
+        },
+        [BUSINESSPAGE2]: {
+            name: "Enter your any other Business page (if any)",
+            placeholder: "e.g https://page.com",
+        }
     }
 
     function getPlatformDictionary(platform) {
@@ -977,19 +1006,6 @@
         payload.share = 1
         payload.branding = 0
 
-        const TIKTOK = "tiktok"
-        const FACEBOOK = "facebook"
-        const TWITTER = "twitter"
-        const INSTAGRAM = "instagram"
-        const YOUTUBE = "youtube"
-        const SPOTIFY = "spotify"
-        const LINKEDIN = "linkedin"
-        const DRIBBBLE = "dribbble"
-        const BEHANCE = "behance"
-        const GITHUB = "github"
-        const EMAIL = "email"
-        const APPLEMUSIC = "applemusic"
-
         let data = {}
         let social = {}
 
@@ -1021,7 +1037,7 @@
             switch (link) {
                 case TIKTOK:
                     data[linkKey].icon = "fab fa-tiktok"
-                    data[linkKey].text = "My Tiktok Page"
+                    data[linkKey].text = "<?php echo $bio->name ?> on Tiktok"
                     social.tiktok = value
                     break
                 case YOUTUBE:
@@ -1031,7 +1047,7 @@
                     break
                 case TWITTER:
                     data[linkKey].icon = "fab fa-twitter"
-                    data[linkKey].text = "View my Tweets"
+                    data[linkKey].text = "<?php echo $bio->name ?> on Twitter"
                     social.twitter = value
                     break
                 case LINKEDIN:
@@ -1046,7 +1062,7 @@
                     break
                 case FACEBOOK:
                     data[linkKey].icon = "fab fa-facebook"
-                    data[linkKey].text = "Facebook Posts"
+                    data[linkKey].text = "<?php echo $bio->name ?> on Facebook"
                     social.facebook = value
                     break
                 case INSTAGRAM:
@@ -1069,6 +1085,14 @@
                 case BEHANCE:
                     data[linkKey].icon = "fab fa-behance"
                     data[linkKey].text = "My Designs on Behance"
+                    break
+                case BUSINESSPAGE1:
+                    data[linkKey].icon = "fas fa-globe"
+                    data[linkKey].text = "Visit our Website"
+                    break
+                case BUSINESSPAGE2:
+                    data[linkKey].icon = "fas fa-globe"
+                    data[linkKey].text = "Visit our Page"
                     break
                 default:
                     data[linkKey].icon = "fas fa-globe"
@@ -1096,6 +1120,7 @@
         payload.socialposition = "top"
         payload.social = social
         payload.data = data
+        payload.isWizardSetup = true
 
         function addPageStyleToPayload(payload) {
             const pickedStyle = pageStyles[getRandomIndexForArr(pageStyles)]
