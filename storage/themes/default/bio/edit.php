@@ -869,7 +869,7 @@
                     if (error)
                         alert(message);
                     else
-                        window.location = window.location.href.split('?')[0];
+                     //   window.location = window.location.href.split('?')[0];
                 },
                 error: function(response) {
                     alert('An error occurred. Please try again.');
