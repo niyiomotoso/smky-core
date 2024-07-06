@@ -716,7 +716,11 @@ class Bio {
         $profile->data = json_encode($data);
         $profile->save();
 
-        return Response::factory(['error' => false, 'message' => e('Profile has been successfully updated.'), 'html' => '<script>$("[data-trigger=shortinfo]").data("shorturl", "'.\Helpers\App::shortRoute($url->domain, $profile->alias).'")</script>', 'token' => csrf_token()])->json();
+        if ($request->isWizardSetup) {
+            return Response::factory(['error' => false, 'message' => e('Profile updated. Kindly upload your bio picture below'), 'html' => '<script>$("[data-trigger=shortinfo]").data("shorturl", "'.\Helpers\App::shortRoute($url->domain, $profile->alias).'")</script>', 'token' => csrf_token()])->json();
+        } else {
+            return Response::factory(['error' => false, 'message' => e('Profile has been successfully updated.'), 'html' => '<script>$("[data-trigger=shortinfo]").data("shorturl", "'.\Helpers\App::shortRoute($url->domain, $profile->alias).'")</script>', 'token' => csrf_token()])->json();
+        }
     }
     /**
      * Preview Bio
