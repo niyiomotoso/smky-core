@@ -864,6 +864,12 @@
                 url: '<?php echo route('bio.update', [$bio->id]) ?>',
                 method: 'POST',
                 data: payload,
+                beforeSend: function(){
+                    $('#loading').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+                },
+                complete: function(){
+                    $('#loading span').remove();
+                },
                 success: function(response){
                     $('input[name=_token]').val(response.token);
                     if(response.error){
