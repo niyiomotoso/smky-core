@@ -865,6 +865,7 @@
                 method: 'POST',
                 data: payload,
                 beforeSend: function(){
+                    $('#editModal').modal('hide');
                     $('#loading').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
                 },
                 complete: function(){
@@ -902,9 +903,6 @@
                         }, 2000);
                         $('.card-preview iframe').attr('src', iframesrc+'?token='+Date.now());
                     }
-                },
-                error: function(response) {
-                    alert('An error occurred. Please try again.');
                 }
             });
         });
