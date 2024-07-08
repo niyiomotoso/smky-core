@@ -159,6 +159,7 @@
                         <div class="col-lg-3">
                             <?php if(!isset($bio->data->avatar)): ?>
                                 Upload Bio Picture Below
+                            <br/>
                             <?php endif ?>
                             <div class="me-3 mb-2 position-relative" style="max-width:200px">
                                 <a href="#" data-trigger="uploadavatar">
