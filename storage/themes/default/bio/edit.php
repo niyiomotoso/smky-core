@@ -864,13 +864,38 @@
                 url: '<?php echo route('bio.update', [$bio->id]) ?>',
                 method: 'POST',
                 data: payload,
-                success: function(response) {
-                    const {error, message} = response
-                    if (error)
-                        alert(message);
-                    else
-                        // window.location = window.location.href.split('?')[0];
-                        $('#editModal').modal('hide');
+                success: function(response){
+                    $('input[name=_token]').val(response.token);
+                    if(response.error){
+                        $.notify({
+                            message: response.message
+                        },{
+                            type: 'danger',
+                            placement: {
+                                from: "top",
+                                align: "right"
+                            },
+                        });
+                    } else {
+                        $.notify({
+                            message: response.message
+                        },{
+                            type: 'success',
+                            placement: {
+                                from: "top",
+                                align: "right"
+                            },
+                        });
+                        if(response.html){
+                            $('body').append(response.html);
+                        }
+                        $('input[type=file]').val('');
+                        $('.card-preview').prepend('<div class="frameloading d-flex align-items-center justify-content-center" style="position: absolute;top: 0;left: 0;height: 100%;width: 100%;background: rgba(0,0,0,0.4);z-index: 999;"><span class="spinner-border spinner-border-xl text-light" role="status" aria-hidden="true" style="width: 3rem; height: 3rem;"></span></div>');
+                        setTimeout(function(){
+                            $('.card-preview .frameloading').remove();
+                        }, 2000);
+                        $('.card-preview iframe').attr('src', iframesrc+'?token='+Date.now());
+                    }
                 },
                 error: function(response) {
                     alert('An error occurred. Please try again.');
