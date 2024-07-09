@@ -1082,7 +1082,7 @@
                     break
                 case TWITTER:
                     data[linkKey].icon = "fab fa-twitter"
-                    data[linkKey].text = "<?php echo $bio->name ?> on Twitter"
+                    data[linkKey].text = "Follow on Twitter"
                     social.twitter = value
                     break
                 case LINKEDIN:
@@ -1102,7 +1102,7 @@
                     break
                 case INSTAGRAM:
                     data[linkKey].icon = "fab fa-instagram"
-                    data[linkKey].text = "Instagram Posts"
+                    data[linkKey].text = "Follow on Instagram"
                     social.instagram = value
                     break
                 case APPLEMUSIC:
