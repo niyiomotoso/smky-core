@@ -1087,7 +1087,7 @@
                     break
                 case LINKEDIN:
                     data[linkKey].icon = "fab fa-linkedin"
-                    data[linkKey].text = "My LinkedIn Profile"
+                    data[linkKey].text = "<?php echo $bio->name ?> on LinkedIn"
                     social.linkedin = value
                     break
                 case GITHUB:
