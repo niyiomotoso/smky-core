@@ -812,7 +812,7 @@
         },
         [YOUTUBE]: {
             name: "Enter your Youtube channel link (if any)",
-            placeholder: "e.g https://www.youtube.com",
+            placeholder: "e.g https://youtube.com",
         },
         [SPOTIFY]: {
             name: "Enter your Spotify link (if any)",
@@ -824,11 +824,11 @@
         },
         [BUSINESSPAGE1]: {
             name: "Enter your Business website (if any)",
-            placeholder: "e.g https://page.com",
+            placeholder: "e.g https://webpage.com",
         },
         [BUSINESSPAGE2]: {
             name: "Enter your any other Business page (if any)",
-            placeholder: "e.g https://page.com",
+            placeholder: "e.g https://webpage.com",
         }
     }
 
