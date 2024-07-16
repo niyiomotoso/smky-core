@@ -776,11 +776,11 @@
     let platformDictionary = {
         [TIKTOK]: {
             name: "Enter your Tiktok link (if any)",
-            placeholder: "e.g https://tiktok.com/name",
+            placeholder: "e.g https://tiktok.com/username",
         },
         [TWITTER]: {
             name: "Enter your Twitter link (if any)",
-            placeholder: "e.g https://twitter.com/name",
+            placeholder: "e.g https://twitter.com/username",
         },
         [INSTAGRAM]: {
             name: "Enter your Instagram link (if any)",
@@ -812,7 +812,7 @@
         },
         [YOUTUBE]: {
             name: "Enter your Youtube channel link (if any)",
-            placeholder: "e.g https://youtube.com",
+            placeholder: "e.g https://youtube.com/channel",
         },
         [SPOTIFY]: {
             name: "Enter your Spotify link (if any)",
