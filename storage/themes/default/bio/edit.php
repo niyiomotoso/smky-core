@@ -709,7 +709,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal logic -->
 <script src="<?php echo assets('frontend/libs/jquery/dist/jquery.min.js') ?>"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
@@ -809,7 +808,7 @@
         },
         [APPLEMUSIC]: {
             name: "Enter your Apple Music link (if any)",
-            placeholder: "e.g https://apple.com",
+            placeholder: "e.g https://applemusic.com",
         },
         [YOUTUBE]: {
             name: "Enter your Youtube channel link (if any)",
@@ -825,11 +824,11 @@
         },
         [BUSINESSPAGE1]: {
             name: "Enter your Business website (if any)",
-            placeholder: "e.g https://page.com",
+            placeholder: "e.g https://webpage.com",
         },
         [BUSINESSPAGE2]: {
             name: "Enter your any other Business page (if any)",
-            placeholder: "e.g https://page.com",
+            placeholder: "e.g https://webpage.com",
         }
     }
 
@@ -1092,7 +1091,7 @@
                     break
                 case GITHUB:
                     data[linkKey].icon = "fab fa-github"
-                    data[linkKey].text = "My Code on Github"
+                    data[linkKey].text = "My Projects on Github"
                     social.github = value
                     break
                 case FACEBOOK:
