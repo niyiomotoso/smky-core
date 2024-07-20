@@ -47,17 +47,17 @@
             <i class="align-middle" data-feather="bar-chart"></i> <span class="align-middle"><?php ee('Statistics') ?></span>
         </a>
     </li>
-    <?php if($user->has('channels')): ?>
-        <li class="sidebar-header"><?php ee('Channels') ?></li>
-        <?php foreach($channels = \Core\DB::channels()->where('userid', $user->rID())->where('starred', 1)->orderByAsc('name')->findMany() as $channel): ?>
-            <li class="sidebar-item"><a class="sidebar-link" href="<?php echo route('channel', [$channel->id]) ?>"><span class="badge me-2 roundeds px-2" style="background:<?php echo $channel->color ?>">&nbsp;</span> <?php echo $channel->name ?></a></li>
-        <?php endforeach ?>
-        <li class="sidebar-item">
-            <a class="sidebar-link" href="<?php echo route('channels') ?>">
-                <i data-feather="package"></i> <span class="align-middle"><?php ee('My Channels') ?></span>
-            </a>
-        </li>
-    <?php endif ?>   
+<!--    --><?php //if($user->has('channels')): ?>
+<!--        <li class="sidebar-header">--><?php //ee('Channels') ?><!--</li>-->
+<!--        --><?php //foreach($channels = \Core\DB::channels()->where('userid', $user->rID())->where('starred', 1)->orderByAsc('name')->findMany() as $channel): ?>
+<!--            <li class="sidebar-item"><a class="sidebar-link" href="--><?php //echo route('channel', [$channel->id]) ?><!--"><span class="badge me-2 roundeds px-2" style="background:--><?php //echo $channel->color ?><!--">&nbsp;</span> --><?php //echo $channel->name ?><!--</a></li>-->
+<!--        --><?php //endforeach ?>
+<!--        <li class="sidebar-item">-->
+<!--            <a class="sidebar-link" href="--><?php //echo route('channels') ?><!--">-->
+<!--                <i data-feather="package"></i> <span class="align-middle">--><?php //ee('My Channels') ?><!--</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    --><?php //endif ?><!--   -->
     <li class="sidebar-header"><?php ee('Link Management') ?></li>
     <li class="sidebar-item">
         <a class="sidebar-link" href="<?php echo route('links') ?>">
@@ -98,48 +98,48 @@
             <?php endif ?>
         <?php endforeach ?>
     <?php endif ?>
-    <?php if($user->has('bundle')): ?>
-    <li class="sidebar-item">
-        <a class="sidebar-link" href="<?php echo route('campaigns') ?>">
-            <i class="align-middle" data-feather="crosshair"></i> <span class="align-middle"><?php ee('Campaigns') ?></span>
-        </a>
-    </li>    
-    <?php endif ?>
-    <?php if($user->has('splash')): ?>
-    <li class="sidebar-item">
-        <a class="sidebar-link" href="<?php echo route('splash') ?>">
-            <i class="align-middle" data-feather="loader"></i> <span class="align-middle"><?php ee('Custom Splash') ?></span>
-        </a>
-    </li>    
-    <?php endif ?>
-    <?php if($user->has('overlay')): ?>
-    <li class="sidebar-item">
-        <a class="sidebar-link" href="<?php echo route('overlay') ?>">
-            <i class="align-middle" data-feather="layers"></i> <span class="align-middle"><?php ee('CTA Overlay') ?></span>
-        </a>
-    </li>    
-    <?php endif ?>
-    <?php if($user->has('pixels')): ?>
-    <li class="sidebar-item">
-        <a class="sidebar-link" href="<?php echo route('pixel') ?>">
-            <i class="align-middle" data-feather="compass"></i> <span class="align-middle"><?php ee('Tracking Pixels') ?></span>
-        </a>
-    </li>    
-    <?php endif ?>
-    <?php if($user->has('domain')): ?>
-    <li class="sidebar-item">
-        <a class="sidebar-link" href="<?php echo route('domain') ?>">
-            <i class="align-middle" data-feather="globe"></i> <span class="align-middle"><?php ee('Branded Domains') ?></span>
-        </a>
-    </li>    
-    <?php endif ?>    
-    <?php if($user->has('team')): ?>
-    <li class="sidebar-item">
-        <a class="sidebar-link" href="<?php echo route('team') ?>">
-            <i class="align-middle" data-feather="users"></i> <span class="align-middle"><?php ee('Teams') ?></span>
-        </a>
-    </li>    
-    <?php endif ?>   
+<!--    --><?php //if($user->has('bundle')): ?>
+<!--    <li class="sidebar-item">-->
+<!--        <a class="sidebar-link" href="--><?php //echo route('campaigns') ?><!--">-->
+<!--            <i class="align-middle" data-feather="crosshair"></i> <span class="align-middle">--><?php //ee('Campaigns') ?><!--</span>-->
+<!--        </a>-->
+<!--    </li>    -->
+<!--    --><?php //endif ?>
+<!--    --><?php //if($user->has('splash')): ?>
+<!--    <li class="sidebar-item">-->
+<!--        <a class="sidebar-link" href="--><?php //echo route('splash') ?><!--">-->
+<!--            <i class="align-middle" data-feather="loader"></i> <span class="align-middle">--><?php //ee('Custom Splash') ?><!--</span>-->
+<!--        </a>-->
+<!--    </li>    -->
+<!--    --><?php //endif ?>
+<!--    --><?php //if($user->has('overlay')): ?>
+<!--    <li class="sidebar-item">-->
+<!--        <a class="sidebar-link" href="--><?php //echo route('overlay') ?><!--">-->
+<!--            <i class="align-middle" data-feather="layers"></i> <span class="align-middle">--><?php //ee('CTA Overlay') ?><!--</span>-->
+<!--        </a>-->
+<!--    </li>    -->
+<!--    --><?php //endif ?>
+<!--    --><?php //if($user->has('pixels')): ?>
+<!--    <li class="sidebar-item">-->
+<!--        <a class="sidebar-link" href="--><?php //echo route('pixel') ?><!--">-->
+<!--            <i class="align-middle" data-feather="compass"></i> <span class="align-middle">--><?php //ee('Tracking Pixels') ?><!--</span>-->
+<!--        </a>-->
+<!--    </li>    -->
+<!--    --><?php //endif ?>
+<!--    --><?php //if($user->has('domain')): ?>
+<!--    <li class="sidebar-item">-->
+<!--        <a class="sidebar-link" href="--><?php //echo route('domain') ?><!--">-->
+<!--            <i class="align-middle" data-feather="globe"></i> <span class="align-middle">--><?php //ee('Branded Domains') ?><!--</span>-->
+<!--        </a>-->
+<!--    </li>    -->
+<!--    --><?php //endif ?><!--    -->
+<!--    --><?php //if($user->has('team')): ?>
+<!--    <li class="sidebar-item">-->
+<!--        <a class="sidebar-link" href="--><?php //echo route('team') ?><!--">-->
+<!--            <i class="align-middle" data-feather="users"></i> <span class="align-middle">--><?php //ee('Teams') ?><!--</span>-->
+<!--        </a>-->
+<!--    </li>    -->
+<!--    --><?php //endif ?><!--   -->
     <?php if($plugged = plug('usermenu')): ?>        
         <?php foreach($plugged as $i => $page): ?>
             <?php if(is_array($page)): ?>
